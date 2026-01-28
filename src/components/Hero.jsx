@@ -5,6 +5,8 @@ import { portfolioData } from '../portfolioData';
 import { Typewriter } from 'react-simple-typewriter';
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import resume from "../assets/anushka_karamchandani_resume.pdf";
+
 
 
 const Hero = () => {
@@ -130,7 +132,7 @@ backdrop-blur-md shadow-lg shadow-cyan-500/20">
 
   {/* Resume */}
   <motion.a
-    href="/anushka_karamchandani_resume.pdf"
+    href={resume}
     download
     whileHover={{ y: -3, scale: 1.04 }}
     className="relative px-7 py-3 rounded-xl font-semibold text-white bg-slate-900 overflow-hidden"
