@@ -130,7 +130,7 @@ backdrop-blur-md shadow-lg shadow-cyan-500/20">
 
   {/* Resume */}
   <motion.a
-    href="../../public/anushka_karamchandani_resume.pdf"
+    href="/anushka_karamchandani_resume.pdf"
     download
     whileHover={{ y: -3, scale: 1.04 }}
     className="relative px-7 py-3 rounded-xl font-semibold text-white bg-slate-900 overflow-hidden"
