@@ -8,6 +8,7 @@ import kjsceLogo from "./assets/KjsceLogo.jpg"
 import project1 from "./assets/Project1.png"
 import reportProject1 from "./assets/Report_OM.pdf"
 import pptProject1 from "./assets/PPT_OM.pdf"
+import anushka_personal from "./assets/anushka_personal.png"
 
 
 
@@ -20,7 +21,7 @@ export const portfolioData = {
     email: "karamchandanianushka1206@gmail.com",
     github: "https://github.com/Mohit555000",
     linkedin: "https://www.linkedin.com/in/anushka-karamchandani-952394203/",
-    photo: "src/assets/anushka_personal.png"
+    photo: anushka_personal
   },
   education: [
   {
