@@ -10,9 +10,6 @@ import reportProject1 from "./assets/Report_OM.pdf"
 import pptProject1 from "./assets/PPT_OM.pdf"
 import anushka_personal from "./assets/anushka_personal.png"
 
-
-
-
 export const portfolioData = {
   personal: {
     name: "Anushka Karamchandani",
