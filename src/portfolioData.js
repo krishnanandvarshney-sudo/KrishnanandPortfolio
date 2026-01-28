@@ -1,4 +1,17 @@
 // src/portfolioData.js
+
+import oracleLogo from "./assets/OracleLogo.png";
+import devtownLogo from "./assets/DevtownLogo.jpg";
+import adoreindiaLogo from "./assets/AdoreIndiaLogoi.jpg";
+import nyuLogo from "./assets/NyuLogo.jpg"
+import kjsceLogo from "./assets/KjsceLogo.jpg"
+import project1 from "./assets/Project1.png"
+import reportProject1 from "./assets/Report_OM.pdf"
+import pptProject1 from "./assets/PPT_OM.pdf"
+
+
+
+
 export const portfolioData = {
   personal: {
     name: "Anushka Karamchandani",
@@ -10,80 +23,127 @@ export const portfolioData = {
     photo: "src/assets/anushka_personal.png"
   },
   education: [
-    {
-      id: 1,
-      degree: "Master of Science in Product Management",
-      institution: "University of Technology",
-      duration: "2024 - 2026",
-      location: "San Francisco, CA",
-      gpa: "3.9/4.0",
-      highlights: [
-        "Specialized in AI Product Strategy and User Experience Research",
-        "Winner of the 2025 Graduate Innovation Challenge",
-        "Served as Graduate Teaching Assistant for Product Analytics"
-      ]
-    },
-    {
-      id: 2,
-      degree: "Bachelor of Technology in Computer Science",
-      institution: "State Engineering College",
-      duration: "2020 - 2024",
-      location: "Mumbai, India",
-      gpa: "3.8/4.0",
-      highlights: [
-        "Head of the Entrepreneurship Cell (E-Cell)",
-        "Completed a capstone project on decentralized finance (DeFi)",
-        "Published a research paper on Human-Computer Interaction"
-      ]
-    }
-  ],
-    skills: {
-    product: [
-      "Product Strategy", 
-      "Market Analysis", 
-      "User Research", 
-      "Agile/Scrum", 
-      "A/B Testing", 
-      "PRD Writing"
+  {
+    id: 1,
+    degree: "Masters in Management of Technology",
+    institution: "New York University",
+    logo: nyuLogo,
+    duration: "Aug 2025 - May 2027",
+    location: "New York, United States",
+    gpa: "3.7/4.0",
+    highlights: [
+      "Currently in Semester 2 with strong focus on applied management and technology coursework",
+    "Completed industry-driven projects in Operations Management, Financial Analysis, and Organizational Behavior",
+    "Student Engagement Ambassador at NYU Phonathon, representing the university and supporting alumni engagement initiatives"
     ],
-    technical: [
-      "React.js", 
-      "JavaScript (ES6+)", 
-      "Node.js", 
-      "SQL", 
-      "Python", 
-      "REST APIs"
-    ],
-    tools: [
-      "Jira", 
-      "Figma", 
-      "Amplitude", 
-      "Mixpanel", 
-      "Postman", 
-      "Google Analytics"
-    ],
-    soft: [
-      "Stakeholder Management", 
-      "Public Speaking", 
-      "Team Leadership", 
-      "Critical Thinking", 
-      "Adaptability"
+    subjects: [
+      "Operations Management",
+      "Financial Analysis For Tech Managers",
+      "Organizational Behaviour",
+      
     ]
   },
+  {
+    id: 2,
+    degree: "Bachelor of Technology in Computer Engineering",
+    institution: "Somaiya Vidyvihar University",
+    logo: kjsceLogo,
+    duration: "2020 - 2024",
+    location: "Mumbai, India",
+    gpa: "3.8/4.0",
+    highlights: [
+      "Strong foundation in Data Structures, Databases, and Software Engineering",
+      "Led student initiatives and coordinated technical events",
+      "Completed multiple academic and real-world projects in web development"
+    ],
+    subjects: [
+      "Data Structures & Algorithms",
+      "Software Engineering",
+      "Probability and Statistics",
+      "Object-Oriented Programming",
+      "Database Management Systems",
+      "Operating Systems",
+      "Computer Networks",
+      "Web Technologies"
+    ]
+    
+  }
+],
+    skills: {
+  product: [
+    "Product Strategy",
+    "Project Mangement",
+    "Product Roadmapping",
+    "User Research",
+    "Requirements Gathering",
+    "Agile/Scrum",
+    "Sprint Planning",
+    "Stakeholder Management",
+    "A/B Testing"
+  ],
+
+  technical: [
+    "React.js",
+    "JavaScript (ES6+)",
+    "Node.js",
+    "SQL",
+    "PL/SQL",
+    "Python",
+    "REST APIs",
+    "MongoDB",
+    "HTML",
+    "CSS"
+  ],
+
+  tools: [
+    "Jira",
+    "Postman",
+    "Git/GitHub",
+    "Confluence",
+    "Tableau",
+    "MS Office (Excel, PowerPoint, Word)",
+  ],
+
+  soft: [
+    "Cross-functional Collaboration",
+    "Communication",
+    "Leadership",
+    "Problem Solving",
+    "Analytical Thinking",
+    "Time Management",
+    "Adaptability",
+    "Presentation Skills"
+  ]
+},
   projects: [
     {
-      id: 1,
-      name: "EcoTrack AI",
-      role: "Lead Product Manager",
-      image: "images.unsplash.com",
-      description: "An AI-powered sustainability platform that helps enterprise companies track and reduce their carbon footprint in real-time.",
-      problem: "Enterprises struggled to aggregate emissions data across fragmented global supply chains.",
-      solution: "Developed an automated ingestion engine that uses ML to categorize and calculate CO2 impact.",
-      impact: "Reduced reporting time by 60% and identified 15% carbon savings for beta clients.",
-      technologies: ["React", "Python", "AWS", "TensorFlow"],
-      github: "github.com",
-      live: "https://ecotrack-demo.com"
-    },
+    id: 1,
+    name: "Operational Resilience Analysis – Aviation",
+    role: "Operations Strategy",
+    image: project1, // use a Boeing/aviation themed image
+    description:
+      "A consulting-style operations strategy project analyzing Boeing’s 737 MAX and 787 programs to improve demand forecasting, supply chain resilience, and quality management using data-driven frameworks.",
+    problem:
+      "Boeing faced volatile demand, single-source supplier risks, and systemic quality failures leading to production delays and safety issues.",
+    solution:
+      "Applied Holt’s Trend-Adjusted forecasting, built a Supplier Risk Matrix, and used QFD & Fishbone Analysis to design proactive operational and quality frameworks.",
+    impact:
+      "Delivered a strategic roadmap enabling proactive capacity planning, dual sourcing decisions, and built-in quality controls to restore operational stability.",
+    technologies: [
+      "Operations Management",
+      "Holt’s Forecasting",
+      "Supply Chain Risk Matrix",
+      "QFD",
+      "Six Sigma",
+      "Root Cause Analysis"
+    ],
+     report: reportProject1,
+  ppt: pptProject1,
+  github: null,
+  live: null
+  },
+ // github: "https://github.com/yourusername/aviation-resilience"
+
     {
       id: 2,
       name: "HealthSync Mobile",
@@ -111,54 +171,92 @@ export const portfolioData = {
       live: "https://finflow.io"
     }
   ],
-  skills: {
-    product: ["Strategy", "Roadmapping"],
-    technical: ["React", "JavaScript"],
-    tools: ["Jira", "Figma"],
-    soft: ["Leadership"]
-  },
-  about:{
-     summary:"Master's student with a passion for building products that solve real-world problems. With 1+ year of industry experience, I combine technical understanding with user-centric design to create impactful solutions. My background in technology and business enables me to bridge the gap between engineering teams and stakeholders, delivering products that users love.",
-      highlights: [
-      "Led cross-functional teams to launch 3 major product features",
-      "Increased user engagement by 40% through data-driven improvements",
-      "Expertise in agile methodologies and product lifecycle management",
-    ],
-  },
-  experience: [
+  
+  about: {
+  summary:
+    "I’m a Management of Technology graduate student at NYU with hands-on experience delivering client-focused technology and product solutions in the banking and enterprise domain. Previously, I worked as an Associate Consultant at Oracle, where I collaborated with global banking clients to translate business requirements into scalable technical solutions. I enjoy working at the intersection of product strategy, project execution, and technology, helping teams ship solutions that are both technically sound and business-driven.",
+
+  highlights: [
     {
-      id: 1,
-      role: "Associate Product Manager",
-      company: "Tech Solutions Inc.",
-      logo: "placehold.co",
-      type: "Full-time",
-      duration: "Jan 2024 - Present",
-      location: "Remote",
-      responsibilities: [
-        "Leading the development of a new customer dashboard using Agile methodologies.",
-        "Collaborating with engineering and design teams to define product requirements.",
-        "Analyzing user feedback to prioritize the product backlog."
-      ],
-      achievements: [
-        "Reduced customer churn by 15% within the first two quarters.",
-        "Successfully launched a beta program with over 500 active participants."
-      ],
-      technologies: ["Jira", "Figma", "Mixpanel", "SQL"]
+      title: "Enterprise Banking Delivery",
+      description:
+        "Led cross-functional teams on enterprise banking projects, working closely with development, QA, and deployment teams to ensure smooth delivery of client solutions at Oracle.",
     },
     {
+      title: "Data-Driven & Compliant Solutions",
+      description:
+        "Contributed to ISO 20022 (MT → MX) migration initiatives, improving global financial compatibility and regulatory compliance.",
+    },
+    {
+      title: "Technology × Management × Users",
+      description:
+        "Bridging technology, management, and users by combining a strong computer science foundation with management training to align engineering efforts with stakeholder needs.",
+    },
+  ],
+},
+
+  experience: [
+  {
+    id: 1,
+    role: "Associate Consultant",
+    company: "Oracle Financial Services Software",
+    logo: oracleLogo,
+    type: "Full-time",
+    duration: "June 2024 - Aug 2025",
+    location: "Goregaon, Maharashtra, India",
+    responsibilities: [
+      "Led cross-functional teams on enterprise banking projects, working closely with development, QA, and deployment teams.",
+      "Collaborated with global stakeholders to translate business requirements into scalable technical solutions.",
+      "Supported ISO 20022 (MT → MX) migration initiatives for global banking clients."
+    ],
+    achievements: [
+      "Improved delivery efficiency by 20–25% by streamlining cross-team coordination across development, QA, and deployment teams.",
+      "Contributed to ISO 20022 (MT → MX) financial messaging modernization, supporting regulatory compliance for global banking clients."
+    ],
+    technologies: ["PLSQL", "Java","Jira", "Agile Methodology"]
+  },
+    {
       id: 2,
-      role: "Product Intern",
-      company: "Innovate Corp",
-      logo: "placehold.co",
+      role: "Project Coordination Intern",
+      company: "DevTown",
+      logo: devtownLogo,
       type: "Internship",
-      duration: "June 2023 - Dec 2023",
-      location: "Mumbai, IN",
+      duration: "Jun 2022 – Nov 2022",
+      location: "India",
       responsibilities: [
-        "Assisted in market research and competitor analysis for a new mobile app.",
-        "Drafted PRDs and user stories for cross-functional development teams.",
-        "Conducted A/B testing on landing pages to improve conversion rates."
+        
+
+"Coordinated UX designers and developers across a cross-functional team of 5–7 members.",
+"Tracked features, dependencies, and timelines across multiple release cycles to ensure on-time delivery.",
+"Facilitated sprint planning, stand-ups, and retrospectives to improve team alignment."
+
       ],
-      technologies: ["Trello", "Google Analytics", "Hotjar"]
+       achievements: [
+      "Improved delivery efficiency by 25–30% by streamlining sprint planning and task prioritization.",
+"Reduced feature turnaround time by 20% through clearer requirements and cross-team communication.",
+"Supported successful launch of 3+ learning modules used by hundreds of students"],
+      technologies: ["MERN Stack (React, Node.js, MongoDB)","Agile Methodology"]
+    },
+      {
+      id: 3,
+      role: "Web Project Management Intern",
+      company: "Adore India",
+      logo: adoreindiaLogo,
+      type: "Internship",
+      duration: "Apr 2022 – May 2022",
+      location: "India",
+      responsibilities: [
+        
+"Managed the development and customization of WordPress-based client websites to improve functionality and user experience.",
+"Coordinated with developers and designers to implement client requirements and ensure high-quality delivery.",
+"Applied Agile methodologies to adapt to evolving client needs and ensure timely project completion.",
+"Performed basic testing and content updates to maintain site performance and usability."
+
+      ],
+       achievements: [
+     "Successfully delivered multiple client websites within tight timelines, improving client satisfaction.",
+"Reduced iteration cycles by 15–20% through clearer requirement gathering and sprint-based execution.",],
+      technologies: ["WordPress","React.js","HTML","CSS"]
     }
   ]
 };

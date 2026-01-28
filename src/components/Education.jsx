@@ -1,5 +1,6 @@
 import React from 'react';
-import { GraduationCap, MapPin, Calendar, Award } from 'lucide-react';
+import { MapPin, Calendar, Award } from 'lucide-react';
+import { motion } from "framer-motion";
 import { Card } from './ui/card';
 import { portfolioData } from '../portfolioData';
 
@@ -18,54 +19,112 @@ const Education = () => {
 
         <div className="grid md:grid-cols-2 gap-8">
           {education.map((edu) => (
-            <Card
+            <motion.div
               key={edu.id}
-              className="p-8 bg-slate-800/50 border-slate-700 hover:border-teal-500/50 transition-all duration-300 hover:scale-105 group"
+              whileHover={{ y: -8, scale: 1.03 }}
+              transition={{ type: "spring", stiffness: 260, damping: 18 }}
             >
-              <div className="space-y-4">
-                {/* Icon */}
-                <div className="w-16 h-16 bg-gradient-to-br from-teal-500/20 to-emerald-500/20 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
-                  <GraduationCap className="text-teal-400" size={32} />
-                </div>
+             <Card
+  className="
+    h-full
+    p-8
+    bg-slate-800/50
+    border border-slate-700
+    border-b-2 border-b-teal-400
+    rounded-xl
+    transition-all duration-300
+    hover:shadow-xl hover:shadow-teal-500/20
+    hover:border-teal-400
+    group
+  "
+>
 
-                {/* Degree */}
-                <div>
-                  <h3 className="text-xl font-bold text-white mb-2">
-                    {edu.degree}
-                  </h3>
-                  <p className="text-lg text-teal-400 font-medium">{edu.institution}</p>
-                </div>
+                <div className="space-y-4">
+                  
+                  {/* Logo */}
+                  <div className="
+                    w-22 h-22 rounded-3xl overflow-hidden bg-slate-800
+                    transition-transform duration-300
+                    group-hover:scale-110
+                  ">
+                    <img
+                      src={edu.logo}
+                      alt={edu.institution}
+                      className="w-full h-full object-cover object-center"
+                    />
+                  </div>
 
-                {/* Meta Info */}
-                <div className="flex flex-wrap gap-4 text-sm text-slate-400">
-                  <div className="flex items-center gap-2">
-                    <Calendar size={16} />
-                    <span>{edu.duration}</span>
+                  {/* Degree */}
+                  <div>
+                    <h3 className="text-xl font-bold text-white mb-2">
+                      {edu.degree}
+                    </h3>
+                    <p className="text-lg text-teal-400 font-medium">
+                      {edu.institution}
+                    </p>
                   </div>
-                  <div className="flex items-center gap-2">
-                    <MapPin size={16} />
-                    <span>{edu.location}</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Award size={16} />
-                    <span>GPA: {edu.gpa}</span>
-                  </div>
-                </div>
 
-                {/* Highlights */}
-                <div>
-                  <h4 className="text-white font-semibold mb-2">Highlights:</h4>
-                  <ul className="space-y-2">
-                    {edu.highlights.map((highlight, idx) => (
-                      <li key={idx} className="text-slate-300 flex items-start gap-2">
-                        <span className="text-teal-400">▸</span>
-                        <span>{highlight}</span>
-                      </li>
-                    ))}
-                  </ul>
+                  {/* Meta */}
+                  <div className="flex flex-wrap gap-4 text-sm text-slate-400">
+                    <div className="flex items-center gap-2">
+                      <Calendar size={16} />
+                      <span>{edu.duration}</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <MapPin size={16} />
+                      <span>{edu.location}</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <Award size={16} />
+                      <span>GPA: {edu.gpa}</span>
+                    </div>
+                  </div>
+
+                  {/* Highlights */}
+                  <div>
+                    <h4 className="text-white font-semibold mb-2">
+                      Highlights:
+                    </h4>
+                    <ul className="space-y-2">
+                      {edu.highlights.map((h, idx) => (
+                        <li key={idx} className="text-slate-300 flex gap-2">
+                          <span className="text-teal-400">▸</span>
+                          <span>{h}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  {/* Subjects */}
+                  <div>
+                    <h4 className="text-white font-semibold mb-2">
+                      Key Subjects:
+                    </h4>
+                    <div className="flex flex-wrap gap-2">
+                      {edu.subjects.map((subject, idx) => (
+                        <span
+                          key={idx}
+                          className="
+                            px-4 py-1.5
+                            text-sm
+                            rounded-full
+                            bg-slate-800/60
+                            text-slate-300
+                            border border-slate-700
+                            hover:border-teal-400
+                            hover:text-teal-400
+                            transition-colors
+                          "
+                        >
+                          {subject}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+
                 </div>
-              </div>
-            </Card>
+              </Card>
+            </motion.div>
           ))}
         </div>
       </div>
