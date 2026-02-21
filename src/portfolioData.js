@@ -6,18 +6,46 @@ import adoreindiaLogo from "./assets/AdoreIndiaLogoi.jpg";
 import nyuLogo from "./assets/NyuLogo.jpg"
 import kjsceLogo from "./assets/KjsceLogo.jpg"
 import project1 from "./assets/Project1.png"
+import project2 from "./assets/Project2.png"
+import project3 from "./assets/Project3.png"
 import reportProject1 from "./assets/Report_OM.pdf"
+import reportProject2 from "./assets/Report_Finance.pdf"
+import reportProject3 from "./assets/Report_Memolaster.pdf"
 import pptProject1 from "./assets/PPT_OM.pdf"
+import pptProject2 from "./assets/PPT_Finance.pdf"
+import cert1PDF from "./assets/cert1PDF.pdf"
+import cert2PDF from "./assets/cert2PDF.pdf"
+import cert3PDF from "./assets/cert3PDF.pdf"
+import cert4PDF from "./assets/cert4PDF.pdf"
+import cert5PDF from "./assets/cert5PDF.pdf"
+import cert6PDF from "./assets/cert6PDF.pdf"
+import cert7PDF from "./assets/cert7PDF.pdf"
+import cert8PDF from "./assets/cert8PDF.pdf"
+import cert9PDF from "./assets/cert9PDF.pdf"
+import cert10PDF from "./assets/cert10PDF.pdf"
+import cert1Thumb from "./assets/cert1Thumb.png"
+import cert2Thumb from "./assets/cert2Thumb.png"
+import cert3Thumb from "./assets/cert3Thumb.png"
+import cert4Thumb from "./assets/cert4Thumb.png"
+import cert5Thumb from "./assets/cert5Thumb.png"
+import cert6Thumb from "./assets/cert6Thumb.png"
+import cert7Thumb from "./assets/cert7Thumb.png"
+import cert8Thumb from "./assets/cert8Thumb.png"
+import cert9Thumb from "./assets/cert9Thumb.png"
+import cert10Thumb from "./assets/cert10Thumb.png"
 import anushka_personal from "./assets/anushka_personal.png"
 
 export const portfolioData = {
   personal: {
     name: "Anushka Karamchandani",
+    phone: "+1 917-635-8141",
     title: "Product, Project & Technology Consultant",
     tagline: "Graduate student at NYU with experience at Oracle delivering client-focused technology solutions for global banking clients. I bridge product strategy, project execution, and engineering to build scalable, user-centric digital products that drive real business impact",
     email: "karamchandanianushka1206@gmail.com",
-    github: "https://github.com/Mohit555000",
+    github: "",
+    instagram: "https://www.instagram.com/anushka_karamchandani?igsh=Zjhibms2NWU2a2M0",
     linkedin: "https://www.linkedin.com/in/anushka-karamchandani-952394203/",
+    location:"861, 61st Street, Brooklyn, New York, United States",
     photo: anushka_personal
   },
   education: [
@@ -142,32 +170,65 @@ export const portfolioData = {
   },
  // github: "https://github.com/yourusername/aviation-resilience"
 
+   {
+    id: 2,
+  name: "Pizza Place Project – Finance in the Real World",
+  role: "Financial Strategy & Business Analyst",
+  image: project2, // use a pizza / storefront image
+  description:
+    "A real-world corporate finance and strategy project conducted with a local Brooklyn pizzeria, focused on evaluating operations, financial performance, financing decisions, and expansion feasibility using actual business data.",
+  
+  problem:
+    "The business faced operational inefficiencies, limited financial visibility, and uncertainty around optimal financing and growth strategies for long-term sustainability.",
+  
+  solution:
+    "Conducted on-site leadership interviews, built customized financial statements, performed forecasting, and evaluated multiple financing scenarios using WACC, NPV, IRR, and cash flow models.",
+  
+  impact:
+    "Delivered a data-driven strategic roadmap recommending optimal capital structure (33% equity + 67% debt), improved delivery efficiency through asset financing, and validated expansion feasibility with strong projected returns.",
+  
+  technologies: [
+    "Financial Modeling",
+    "WACC & NPV Analysis",
+    "Scenario Planning",
+    "Valuation",
+    "Stakeholder Analysis",
+    "Excel"
+  ],
+     report: reportProject2,
+  ppt: pptProject2,
+  github: null,
+  live: null
+  },
     {
-      id: 2,
-      name: "HealthSync Mobile",
-      role: "Product Manager",
-      image: "images.unsplash.com",
-      description: "A patient-centric mobile application bridging the communication gap between rural patients and urban healthcare providers.",
-      problem: "Rural patients faced 30% higher appointment no-show rates due to lack of follow-up care.",
-      solution: "Created an offline-first mobile app with automated SMS reminders and telehealth integration.",
-      impact: "Onboarded 10k+ users and decreased appointment no-show rates by 22% in the first quarter.",
-      technologies: ["React Native", "Node.js", "MongoDB", "Twilio"],
-      github: "github.com",
-      live: "" // Example without a live link to test the conditional button
-    },
-    {
-      id: 3,
-      name: "FinFlow Dashboard",
-      role: "Product Designer & PM",
-      image: "images.unsplash.com",
-      description: "A financial visualization tool for small business owners to manage cash flow and predict future revenue.",
-      problem: "Small business owners found existing accounting software too complex and non-visual.",
-      solution: "Designed a 'One-Glance' dashboard focused on cash-on-hand and upcoming runway predictions.",
-      impact: "Achieved a 4.8/5 CSAT score during the initial user testing phase.",
-      technologies: ["Next.js", "D3.js", "PostgreSQL", "Tailwind"],
-      github: "github.com",
-      live: "https://finflow.io"
-    }
+  id: 3,
+  name: "MemoLaster – Vocabulary Learning Application",
+  role: "Full Stack Developer",
+  image: project3,
+  description:
+    "A gamified vocabulary learning web application designed to improve English vocabulary retention through interactive games, adaptive difficulty levels, and personalized word banks.",
+  problem:
+    "Traditional vocabulary learning relies heavily on rote memorization, resulting in low engagement, poor retention, and limited accessibility for learners with different needs.",
+  solution:
+    "Developed a gamified learning platform featuring word-guess and word-unscramble games, adaptive difficulty recommendations, custom dictionaries, and accessibility-focused features like text-to-speech.",
+  impact:
+    "Enabled personalized, engaging vocabulary learning with improved retention through adaptive quizzes, gamification, and inclusive design for diverse learners.",
+  technologies: [
+    "React.js",
+    "Node.js",
+    "Express.js",
+    "MongoDB",
+    "HTML",
+    "CSS",
+    "JavaScript",
+    "NLP (Text-to-Speech)",
+    "Gamification",
+  ],
+  report: reportProject3,
+  ppt: null,
+  github: "https://github.com/Anushka-Karamchandani-662/Memolaster_VocabularyLearningApp",
+  live: null,
+}
   ],
   
   about: {
@@ -192,7 +253,127 @@ export const portfolioData = {
     },
   ],
 },
+leadership: [
+  {
+    id: 1,
+    description: "Sponsorship Lead for a 1,000+ attendee college summit — secured partnerships, coordinated stakeholders, and supported event logistics."
+  },
+  {
+    id: 2,
+    description: "Volunteer, Oracle Swadesh Program — contributed to community initiatives including beach cleanups and Diwali card campaigns supporting underprivileged communities."
+  },
+  {
+    id: 3,
+    description: "Freelance Tutor — mentored high school students in Math and Science, improving academic performance and confidence."
+  },
+  {
+    id: 4,
+    description: "Member, Club InSignia (Art Club) — organized cultural activities and collaborative events."
+  }
+],
 
+certifications: [
+    {
+      id: 1,
+      name: "Tableau Essential Training",
+      issuer: "Linkedin Learning",
+      date: "October 2025",
+      logo: kjsceLogo,
+      skills: ["Tableau"],
+      preview: cert1Thumb,
+      link: cert1PDF,
+    },
+    {
+      id: 2,
+      name: "UNIX and Linux Essentials",
+      issuer: "Oracle University",
+      date: "Jun 2024",
+      logo: oracleLogo,
+      skills: ["Linux", "UNIX", "Command Line", "System Basics"],
+      preview: cert2Thumb,
+      link: cert2PDF,
+    },
+    {
+      id: 3,
+      name: "SQL Fundamentals",
+      issuer: "Oracle University",
+      date: "2024",
+      logo: kjsceLogo,
+      skills: ["SQL", "Database Queries", "Data Management"],
+      preview: cert3Thumb,
+      link: cert3PDF,
+    },
+     {
+      id: 4,
+      name: "The Art & Science of Product Management",
+      issuer: "Advancing Women in Tech (AWIT)",
+      date: "2023",
+      logo: kjsceLogo,
+      skills: ["Product Strategy","Agile"],
+      preview: cert4Thumb,
+      link: cert4PDF,
+    },
+     {
+      id: 5,
+      name: "Information Design",
+      issuer: "University of California San Diego",
+      date: "2023",
+      logo: kjsceLogo,
+      skills: ["Information Architecture", "Visual Communication"],
+      preview: cert5Thumb,
+      link: cert5PDF,
+    },
+    {
+      id: 6,
+      name: "Building AI Powered Chatbots",
+      issuer: "IBM",
+      date: "2023",
+      logo: kjsceLogo,
+      skills: ["Enterprise Systems", "Technology Fundamentals"],
+      preview: cert6Thumb,
+      link: cert6PDF,
+    },
+    {
+      id: 7,
+      name: "UX Design Fundamentals",
+      issuer: "Calarts",
+      date: "2023",
+      logo: kjsceLogo,
+      skills: ["UX Design","Interaction Design"],
+      preview: cert7Thumb,
+      link: cert7PDF,
+    },
+   {
+    id: 8,
+    name: "Full Stack Web Development",
+    issuer: "DevTown",
+    date: "2022",
+    skills: ["MERN Stack", "Web Development"],
+    preview: cert8Thumb,
+    link: cert8PDF,
+  },
+
+  {
+    id: 9,
+    name: "Core Java Certification",
+    issuer: "Maharashtra Technical & Self Employment Training Society",
+    date: "2021",
+    skills: ["Core Java", "OOP", "Programming"],
+    preview: cert9Thumb,
+    link: cert9PDF,
+  },
+
+  {
+    id: 10,
+    name: "Diploma in C Programming",
+    issuer: "Flash Computer Education",
+    date: "2021",
+    skills: ["C Programming", "Problem Solving"],
+    preview: cert10Thumb,
+    link: cert10PDF,
+  },
+    
+  ],
   experience: [
   {
     id: 1,

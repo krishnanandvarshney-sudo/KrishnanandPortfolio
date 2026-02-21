@@ -18,12 +18,16 @@ const Header = () => {
   }, [isMobileMenuOpen]);
 
   const navItems = [
+     { label: "Home", href: "#hero" },
     { label: "About", href: "#about" },
     { label: "Experience", href: "#experience" },
     { label: "Projects", href: "#projects" },
+     { label: "Education", href: "#education" },
     { label: "Skills", href: "#skills" },
-    { label: "Education", href: "#education" },
+    { label: "Certifications", href: "#certifications" },
+    { label: "Activities", href: "#leadership" },
     { label: "Contact", href: "#contact" },
+    
   ];
 
   const scrollToSection = (e, href) => {

@@ -10,6 +10,9 @@ import Experience from './components/Experience'
 import Projects from './components/Projects'
 import Education from './components/Education'
 import Skills from './components/Skills'
+import Leadership from "./components/Leadership";
+import Certifications from "./components/Certifications";
+
 
 function App() {
 
@@ -22,6 +25,8 @@ function App() {
      <Projects/>
      <Education/>
      <Skills/>
+    <Certifications/>
+     <Leadership/>
      <Contact/>
     </>
   )

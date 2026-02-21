@@ -54,6 +54,8 @@ export const Skills = () => {
   return (
     <section id="skills" className="py-20 bg-slate-950">
       <div className="max-w-7xl mx-auto px-6">
+
+        {/* Header */}
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
             Skills & Expertise
@@ -64,20 +66,27 @@ export const Skills = () => {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-8 items-stretch">
+        {/* ⭐ COLUMN GRID (ALL IN ONE ROW) */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+
           {skillCategories.map((category, index) => {
             const Icon = category.icon;
+
             return (
               <motion.div
                 key={index}
-                whileHover={{ y: -8, scale: 1.03 }}
-                transition={{ type: "spring", stiffness: 260, damping: 18 }}
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                whileHover={{ y: -8, scale: 1.02 }}
               >
                 <Card
                   className={`
                     h-full
                     group
-                    p-8 bg-slate-900/50 
+                    p-6
+                    bg-slate-900/50
                     border border-slate-800
                     border-b-2 border-b-teal-400
                     rounded-xl
@@ -86,36 +95,39 @@ export const Skills = () => {
                     ${category.hoverBorder}
                   `}
                 >
-                  <div className="flex items-center gap-3 mb-6">
+                  {/* Header */}
+                  <div className="flex items-center gap-3 mb-5">
                     <div
                       className={`
                         p-3 bg-gradient-to-br ${category.color}
-                        bg-opacity-20 rounded-lg
+                        rounded-lg
                         transition-transform duration-300
                         group-hover:scale-110
                       `}
                     >
-                      <Icon className="text-white" size={24} />
+                      <Icon className="text-white" size={20} />
                     </div>
+
                     <h3
-                      className={`text-2xl font-bold text-white transition-colors ${category.titleHover}`}
+                      className={`text-lg font-bold text-white transition-colors ${category.titleHover}`}
                     >
                       {category.title}
                     </h3>
                   </div>
 
+                  {/* Skills */}
                   <div className="flex flex-wrap gap-2">
                     {category.skills.map((skill, idx) => (
                       <Badge
                         key={idx}
                         variant="secondary"
                         className={`
-                          bg-slate-800 
+                          bg-slate-800
                           ${category.skillColor}
+                          text-xs
                           font-semibold
-                          text-sm
-                          px-5 py-2.5
-                          hover:bg-slate-700 
+                          px-3 py-1.5
+                          hover:bg-slate-700
                           transition-all
                         `}
                       >
@@ -128,6 +140,7 @@ export const Skills = () => {
             );
           })}
         </div>
+
       </div>
     </section>
   );
