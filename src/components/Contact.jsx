@@ -41,7 +41,7 @@ const Contact = () => {
 
       setSuccess(true);
       setForm({ name: "", email: "", message: "" });
-    } catch (err) {
+    } catch {
       alert("Failed to send message.");
     }
 
@@ -49,8 +49,8 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-24 bg-slate-950 scroll-mt-24">
-      <div className="max-w-6xl mx-auto px-6">
+    <section id="contact" className="py-16 md:py-24 bg-slate-950 scroll-mt-24">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6">
 
         {/* HEADER */}
         <motion.div
@@ -58,43 +58,43 @@ const Contact = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-14"
+          className="text-center mb-10 md:mb-14"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4">
             Contact Me
           </h2>
           <div className="w-20 h-1 bg-gradient-to-r from-teal-500 to-emerald-500 mx-auto" />
-          <p className="text-slate-400 mt-4 text-lg">
+          <p className="text-slate-400 mt-4 text-base sm:text-lg">
             Let’s build something great together
           </p>
         </motion.div>
 
         {/* GRID */}
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
 
           {/* LEFT PANEL */}
           <motion.div
-            initial={{ opacity: 0, x: -40 }}
+            initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
             className="
               bg-slate-800/40 backdrop-blur-md
               border border-slate-700
-              rounded-2xl p-8
+              rounded-2xl p-5 sm:p-8
               shadow-lg shadow-teal-500/5
             "
           >
-            <h3 className="text-2xl font-bold text-white mb-6">
+            <h3 className="text-xl sm:text-2xl font-bold text-white mb-6">
               Get in Touch
             </h3>
 
-            <div className="space-y-5 text-slate-300">
+            <div className="space-y-4 text-slate-300 text-sm sm:text-base">
 
-              <Info icon={<User />} text={personal.name} />
-              <Info icon={<Mail />} text={personal.email} />
-              <Info icon={<Phone />} text={personal.phone || "+1 XXX XXX XXXX"} />
-              <Info icon={<MapPin />} text="New York, United States" />
+              <Info icon={<User size={18} />} text={personal.name} />
+              <Info icon={<Mail size={18} />} text={personal.email} />
+              <Info icon={<Phone size={18} />} text={personal.phone || "+1 XXX XXX XXXX"} />
+              <Info icon={<MapPin size={18} />} text="New York, United States" />
 
               <a
                 href={personal.linkedin}
@@ -102,7 +102,7 @@ const Contact = () => {
                 rel="noopener noreferrer"
                 className="flex items-center gap-3 hover:text-teal-400 transition-all hover:translate-x-1"
               >
-                <Linkedin className="text-teal-400" />
+                <Linkedin className="text-teal-400" size={18} />
                 LinkedIn Profile
               </a>
 
@@ -112,7 +112,7 @@ const Contact = () => {
                 rel="noopener noreferrer"
                 className="flex items-center gap-3 hover:text-pink-400 transition-all hover:translate-x-1"
               >
-                <Instagram className="text-pink-400" />
+                <Instagram className="text-pink-400" size={18} />
                 Instagram
               </a>
 
@@ -122,14 +122,14 @@ const Contact = () => {
           {/* RIGHT PANEL */}
           <motion.form
             onSubmit={handleSend}
-            initial={{ opacity: 0, x: 40 }}
+            initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
             className="
               bg-slate-800/40 backdrop-blur-md
               border border-slate-700
-              rounded-2xl p-8 space-y-4
+              rounded-2xl p-5 sm:p-8 space-y-4
               shadow-lg shadow-teal-500/5
             "
           >
@@ -169,43 +169,30 @@ const Contact = () => {
               "
             />
 
-            {/* PREMIUM BUTTON */}
-         <motion.button
-  whileHover={{
-    scale: 1.03,
-    boxShadow: "0px 0px 30px rgba(20,184,166,0.6)",
-  }}
-  whileTap={{ scale: 0.98 }}
-  type="submit"
-  disabled={sending}
-  className="
-    w-full
-    py-3 rounded-xl
-    font-semibold
-    tracking-wide
-
-    text-white
-    hover:text-black !important
-
-    bg-gradient-to-r
-    from-teal-500
-    via-emerald-500
-    to-teal-600
-
-    hover:from-teal-300
-    hover:via-emerald-300
-    hover:to-teal-400
-
-    transition-all duration-300
-
-    shadow-lg shadow-teal-500/30
-    hover:shadow-teal-400/60
-
-    disabled:opacity-60
-  "
->
-  {sending ? "Sending..." : "Send Message"}
-</motion.button>
+            {/* BUTTON */}
+            <motion.button
+              whileHover={{
+                scale: 1.03,
+                boxShadow: "0px 0px 30px rgba(20,184,166,0.6)",
+              }}
+              whileTap={{ scale: 0.98 }}
+              type="submit"
+              disabled={sending}
+              className="
+                w-full py-3 rounded-xl
+                font-semibold tracking-wide
+                text-white hover:text-black
+                bg-gradient-to-r
+                from-teal-500 via-emerald-500 to-teal-600
+                hover:from-teal-300 hover:via-emerald-300 hover:to-teal-400
+                transition-all duration-300
+                shadow-lg shadow-teal-500/30
+                hover:shadow-teal-400/60
+                disabled:opacity-60
+              "
+            >
+              {sending ? "Sending..." : "Send Message"}
+            </motion.button>
 
             {success && (
               <p className="text-teal-400 text-sm text-center">
@@ -213,7 +200,6 @@ const Contact = () => {
               </p>
             )}
           </motion.form>
-
         </div>
       </div>
     </section>
@@ -240,8 +226,7 @@ const Input = ({ type = "text", ...props }) => (
       rounded-xl p-3 text-white
       focus:border-teal-400
       focus:ring-2 focus:ring-teal-500/30
-      outline-none
-      transition-all
+      outline-none transition-all
     "
   />
 );

@@ -7,54 +7,59 @@ const Certifications = () => {
 
   if (!certifications.length) return null;
 
-  /* 🔥 AUTO GLOW BASED ON ISSUER */
+  /* AUTO GLOW BASED ON ISSUER */
   const getIssuerStyle = (issuer = "") => {
     const i = issuer.toLowerCase();
 
     if (i.includes("ibm"))
-      return "hover:shadow-blue-500/40 hover:border-blue-700 hover:border-2";
+      return "hover:shadow-blue-500/40 hover:border-blue-700";
 
     if (i.includes("coursera"))
-      return "hover:shadow-purple-500/40 hover:border-purple-700 hover:border-2";
+      return "hover:shadow-purple-500/40 hover:border-purple-700";
 
     if (i.includes("oracle"))
-      return "hover:shadow-red-500/40 hover:border-red-700 hover:border-2";
+      return "hover:shadow-red-500/40 hover:border-red-700";
 
     if (i.includes("scrum"))
-      return "hover:shadow-orange-500/40 hover:border-orange-700 hover:border-2";
+      return "hover:shadow-orange-500/40 hover:border-orange-700";
 
     if (i.includes("devtown"))
-      return "hover:shadow-violet-500/40 hover:border-violet-700 hover:border-2";
+      return "hover:shadow-violet-500/40 hover:border-violet-700";
 
-    return "hover:shadow-teal-500/40 hover:border-teal-700 hover:border-2";
+    return "hover:shadow-teal-500/40 hover:border-teal-700";
   };
 
   return (
     <section
       id="certifications"
-      className="py-24 bg-slate-900 scroll-mt-24"
+      className="py-16 md:py-24 bg-slate-900 scroll-mt-24"
     >
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
 
         {/* HEADER */}
-        <div className="text-center mb-14">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
+        <div className="text-center mb-12 md:mb-14">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4">
             Certifications
           </h2>
+
           <div className="w-20 h-1 bg-gradient-to-r from-teal-500 to-emerald-500 mx-auto" />
-          <p className="text-slate-400 mt-4 text-lg">
+
+          <p className="text-slate-400 mt-4 text-base sm:text-lg">
             Industry-recognized credentials
           </p>
         </div>
 
-        {/* GRID — 4 CARDS PER ROW */}
-        <div className="
-          grid
-          grid-cols-1
-          sm:grid-cols-2
-          lg:grid-cols-4
-          gap-5
-        ">
+        {/* RESPONSIVE GRID */}
+        <div
+          className="
+            grid
+            grid-cols-1
+            sm:grid-cols-2
+            lg:grid-cols-3
+            xl:grid-cols-4
+            gap-4 sm:gap-5
+          "
+        >
           {certifications.map((cert, index) => (
             <motion.div
               key={cert.id}
@@ -62,19 +67,20 @@ const Certifications = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.35, delay: index * 0.05 }}
-              whileHover={{ y: -6, scale: 1.02 }}
+              whileHover={{ y: -5, scale: 1.015 }}
               className={`
                 bg-slate-800/60
                 border border-slate-700
                 rounded-lg
                 overflow-hidden
                 transition-all duration-300
+                hover:border-2
                 ${getIssuerStyle(cert.issuer)}
               `}
             >
 
-              {/* HALF PREVIEW (NO SCROLLERS) */}
-              <div className="h-32 bg-slate-900 border-b border-slate-700 overflow-hidden">
+              {/* PREVIEW */}
+              <div className="h-28 sm:h-32 bg-slate-900 border-b border-slate-700 overflow-hidden">
                 <img
                   src={cert.preview}
                   alt={cert.name}
@@ -83,9 +89,9 @@ const Certifications = () => {
               </div>
 
               {/* CONTENT */}
-              <div className="p-3 space-y-2">
+              <div className="p-3 sm:p-4 space-y-2">
 
-                <h3 className="text-sm font-bold text-white leading-snug">
+                <h3 className="text-sm sm:text-base font-bold text-white leading-snug">
                   {cert.name}
                 </h3>
 

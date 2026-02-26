@@ -25,8 +25,7 @@ const glassButton =
 
 /* ---------- Swipe Logic ---------- */
 const swipeConfidenceThreshold = 7000;
-const swipePower = (offset, velocity) =>
-  Math.abs(offset) * velocity;
+const swipePower = (offset, velocity) => Math.abs(offset) * velocity;
 
 const Projects = () => {
   const { projects } = portfolioData;
@@ -60,39 +59,45 @@ const Projects = () => {
         {/* ---------- CAROUSEL ---------- */}
         <div className="relative max-w-2xl mx-auto">
 
-          {/* LEFT ARROW */}
-          <button
-            onClick={() => paginate(-1)}
-            className="
-              absolute left-[-65px] top-[45%] -translate-y-1/2 z-20
-              p-3 rounded-full bg-slate-800/70 backdrop-blur-md
-              border border-slate-600 text-white
-              hover:scale-110 hover:bg-slate-700
-              transition-all duration-300
-              shadow-[0_0_30px_rgba(20,184,166,0.35)]
-            "
-          >
-            <ChevronLeft size={34} />
-          </button>
-
-          {/* RIGHT ARROW */}
-          <button
-            onClick={() => paginate(1)}
-            className="
-              absolute right-[-65px] top-[45%] -translate-y-1/2 z-20
-              p-3 rounded-full bg-slate-800/70 backdrop-blur-md
-              border border-slate-600 text-white
-              hover:scale-110 hover:bg-slate-700
-              transition-all duration-300
-              shadow-[0_0_30px_rgba(20,184,166,0.35)]
-            "
-          >
-            <ChevronRight size={34} />
-          </button>
-
-          {/* BIGGER COUNTER */}
+          {/* PROJECT COUNTER */}
           <div className="text-center mb-3 text-teal-300 text-lg font-semibold tracking-wide">
             {index + 1} / {projects.length} projects
+          </div>
+
+          {/* ARROWS (SEPARATE ROW — FIXED UX) */}
+          <div className="flex justify-center items-center gap-6 mb-5">
+
+            <button
+              onClick={() => paginate(-1)}
+              className="
+                p-3 rounded-full
+                bg-slate-800/70 backdrop-blur-md
+                border border-slate-600
+                text-white
+                hover:scale-110 hover:bg-slate-700
+                transition-all duration-300
+                shadow-[0_0_30px_rgba(20,184,166,0.35)]
+                hover:shadow-teal-400/40
+              "
+            >
+              <ChevronLeft size={30} />
+            </button>
+
+            <button
+              onClick={() => paginate(1)}
+              className="
+                p-3 rounded-full
+                bg-slate-800/70 backdrop-blur-md
+                border border-slate-600
+                text-white
+                hover:scale-110 hover:bg-slate-700
+                transition-all duration-300
+                shadow-[0_0_30px_rgba(20,184,166,0.35)]
+                hover:shadow-teal-400/40
+              "
+            >
+              <ChevronRight size={30} />
+            </button>
           </div>
 
           {/* DOT INDICATOR */}
@@ -135,7 +140,7 @@ const Projects = () => {
                   transition-all duration-300
                 "
               >
-                {/* SMALLER IMAGE */}
+                {/* IMAGE */}
                 <div className="relative h-28 overflow-hidden">
                   <img
                     src={project.image}
@@ -200,22 +205,37 @@ const Projects = () => {
                   {/* BUTTONS */}
                   <div className="flex justify-center gap-2 pt-2 flex-wrap">
                     {project.report && (
-                      <Button className={glassButton} onClick={() => window.open(project.report, "_blank")}>
+                      <Button
+                        className={glassButton}
+                        onClick={() => window.open(project.report, "_blank")}
+                      >
                         <FileText size={14} /> Report
                       </Button>
                     )}
+
                     {project.ppt && (
-                      <Button className={glassButton} onClick={() => window.open(project.ppt, "_blank")}>
+                      <Button
+                        className={glassButton}
+                        onClick={() => window.open(project.ppt, "_blank")}
+                      >
                         <Presentation size={14} /> PPT
                       </Button>
                     )}
+
                     {project.github && (
-                      <Button className={glassButton} onClick={() => window.open(project.github, "_blank")}>
+                      <Button
+                        className={glassButton}
+                        onClick={() => window.open(project.github, "_blank")}
+                      >
                         <Github size={14} /> Code
                       </Button>
                     )}
+
                     {project.live && (
-                      <Button className={glassButton} onClick={() => window.open(project.live, "_blank")}>
+                      <Button
+                        className={glassButton}
+                        onClick={() => window.open(project.live, "_blank")}
+                      >
                         <ExternalLink size={14} /> Live
                       </Button>
                     )}

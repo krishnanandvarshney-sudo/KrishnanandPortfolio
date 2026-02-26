@@ -54,8 +54,8 @@ const About = () => {
   ];
 
   return (
-    <section id="about" className="py-24 bg-slate-900">
-      <div className="max-w-7xl mx-auto px-6">
+    <section id="about" className="py-16 md:py-24 bg-slate-900">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
 
         {/* -------- Section Header -------- */}
         <motion.div
@@ -63,15 +63,15 @@ const About = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-12 md:mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4">
             About Me
           </h2>
           <div className="w-20 h-1 bg-gradient-to-r from-teal-500 to-emerald-500 mx-auto" />
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-14 items-start">
+        <div className="grid md:grid-cols-2 gap-10 md:gap-14 items-start">
 
           {/* -------- Left: Summary -------- */}
           <motion.div
@@ -79,13 +79,13 @@ const About = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
-            className="space-y-6"
+            className="space-y-5 md:space-y-6"
           >
-            <p className="text-lg text-slate-300 leading-relaxed">
+            <p className="text-base sm:text-lg text-slate-300 leading-relaxed">
               {about.summary}
             </p>
 
-            <p className="text-lg text-slate-300 leading-relaxed">
+            <p className="text-base sm:text-lg text-slate-300 leading-relaxed">
               With a background in{" "}
               <span className="text-white font-medium">
                 computer science, consulting, and management
@@ -105,7 +105,7 @@ const About = () => {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="space-y-5"
+            className="space-y-4 md:space-y-5"
           >
             {highlights.map((item, index) => {
               const Icon = item.icon;
@@ -114,38 +114,42 @@ const About = () => {
                 <motion.div
                   key={index}
                   variants={cardVariants}
-                  whileHover={{ y: -8, scale: 1.02 }}
-                  transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                  whileHover={{ y: -6, scale: 1.015 }}
+                  transition={{ type: "spring", stiffness: 280, damping: 20 }}
                 >
                   <Card
                     className="
-                      group relative p-6
+                      group relative
+                      p-4 sm:p-5 md:p-6
                       bg-slate-800/60
                       rounded-xl
-
                       border border-slate-700
                       border-b-2 border-b-teal-400
-
-                      transition-all duration-300 ease-out
+                      transition-all duration-300
                       hover:shadow-xl hover:shadow-teal-500/20
                       hover:border-teal-400
                     "
                   >
-                    <div className="flex items-start gap-4">
-                      <div className="
-                        p-3 bg-slate-700/40 rounded-lg
-                        transition-transform duration-300
-                        group-hover:rotate-6
-                        group-hover:scale-110
-                      ">
-                        <Icon className="text-teal-400" size={24} />
+                    <div className="flex items-start gap-3 sm:gap-4">
+                      <div
+                        className="
+                          p-2.5 sm:p-3
+                          bg-slate-700/40 rounded-lg
+                          transition-transform duration-300
+                          group-hover:rotate-6
+                          group-hover:scale-110
+                        "
+                      >
+                        <Icon className="text-teal-400" size={22} />
                       </div>
 
                       <div>
-                        <h3 className={`font-semibold mb-1 ${item.titleColor}`}>
+                        <h3
+                          className={`text-sm sm:text-base font-semibold mb-1 ${item.titleColor}`}
+                        >
                           {item.title}
                         </h3>
-                        <p className="text-slate-300 text-sm leading-relaxed">
+                        <p className="text-slate-300 text-xs sm:text-sm leading-relaxed">
                           {item.description}
                         </p>
                       </div>
@@ -155,6 +159,7 @@ const About = () => {
               );
             })}
           </motion.div>
+
         </div>
       </div>
     </section>

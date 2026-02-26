@@ -17,7 +17,8 @@ import Certifications from "./components/Certifications";
 function App() {
 
   return (
-    <>
+    <div className="overflow-x-hidden">
+    
      <Header/>
      <Hero/>
      <About/>
@@ -28,7 +29,8 @@ function App() {
     <Certifications/>
      <Leadership/>
      <Contact/>
-    </>
+    
+    </div>
   )
 }
 
