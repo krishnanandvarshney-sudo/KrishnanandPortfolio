@@ -4,6 +4,8 @@ import { Card } from "./ui/card";
 import { Badge } from "./ui/badge";
 import { Lightbulb, Code, Wrench, Heart } from "lucide-react";
 import { portfolioData } from "../portfolioData";
+import { Cpu } from "lucide-react";
+import { Users } from "lucide-react";
 
 export const Skills = () => {
   const { skills } = portfolioData;
@@ -20,15 +22,16 @@ export const Skills = () => {
       titleHover: "group-hover:text-teal-400",
     },
     {
-      title: "Technical Skills",
-      icon: Code,
-      skills: skills.technical,
-      color: "from-orange-500 to-pink-500",
-      skillColor: "text-orange-400",
-      glow: "hover:shadow-orange-500/20",
-      hoverBorder: "hover:border-orange-400",
-      titleHover: "group-hover:text-orange-400",
+      title: "Leadership & Communication",
+      icon: Users,
+      skills: skills.soft,
+      color: "from-purple-500 to-pink-500",
+      skillColor: "text-purple-400",
+      glow: "hover:shadow-purple-500/20",
+      hoverBorder: "hover:border-purple-400",
+      titleHover: "group-hover:text-purple-400",
     },
+   
     {
       title: "Tools & Platforms",
       icon: Wrench,
@@ -39,15 +42,16 @@ export const Skills = () => {
       hoverBorder: "hover:border-blue-400",
       titleHover: "group-hover:text-blue-400",
     },
-    {
-      title: "Soft Skills",
-      icon: Heart,
-      skills: skills.soft,
-      color: "from-purple-500 to-pink-500",
-      skillColor: "text-purple-400",
-      glow: "hover:shadow-purple-500/20",
-      hoverBorder: "hover:border-purple-400",
-      titleHover: "group-hover:text-purple-400",
+    
+     {
+      title: "Hardware Skills",
+      icon: Cpu,
+      skills: skills.technical,
+      color: "from-orange-500 to-pink-500",
+      skillColor: "text-orange-400",
+      glow: "hover:shadow-orange-500/20",
+      hoverBorder: "hover:border-orange-400",
+      titleHover: "group-hover:text-orange-400",
     },
   ];
 

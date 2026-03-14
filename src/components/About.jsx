@@ -85,7 +85,7 @@ const About = () => {
               {about.summary}
             </p>
 
-            <p className="text-base sm:text-lg text-slate-300 leading-relaxed">
+            {/* <p className="text-base sm:text-lg text-slate-300 leading-relaxed">
               With a background in{" "}
               <span className="text-white font-medium">
                 computer science, consulting, and management
@@ -96,7 +96,7 @@ const About = () => {
               </span>{" "}
               to solving complex problems—whether it’s improving a product,
               managing a project, or advising on technology decisions.
-            </p>
+            </p> */}
           </motion.div>
 
           {/* -------- Right: Highlight Cards -------- */}

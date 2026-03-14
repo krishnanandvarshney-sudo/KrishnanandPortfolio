@@ -3,14 +3,15 @@ import { ArrowRight, Download } from "lucide-react";
 import { motion } from "framer-motion";
 import { Typewriter } from "react-simple-typewriter";
 import { portfolioData } from "../portfolioData";
-import resume from "../assets/anushka_karamchandani_resume.pdf";
+import resume from "../assets/Varshney_Krishnanand_Resume.pdf";
 
 const Hero = () => {
   const { personal } = portfolioData;
 
   const titles = [
-    { text: "Project Manager", color: "text-emerald-200" },
-    { text: "Technology Consultant", color: "text-amber-100" },
+    { text: "Product Manager", color: "text-emerald-200" },
+    { text: "NYU Graduate student", color: "text-amber-100" },
+    { text: "Industrial Operations Leader", color: "text-amber-50" },
   ];
 
   const [titleIndex, setTitleIndex] = useState(0);
@@ -95,7 +96,7 @@ const Hero = () => {
             >
               Hi, I'm{" "}
               <span className="bg-gradient-to-r from-teal-400 to-emerald-400 bg-clip-text text-transparent">
-                Anushka Karamchandani
+                Krishnanand Varshney
               </span>
             </motion.h2>
 

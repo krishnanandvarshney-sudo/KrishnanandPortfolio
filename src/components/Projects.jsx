@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import {
   ExternalLink,
   Github,
-  Target,
   FileText,
   Presentation,
   ChevronLeft,
@@ -50,7 +49,9 @@ const Projects = () => {
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
             Featured Projects
           </h2>
+
           <div className="w-20 h-1 bg-gradient-to-r from-teal-500 to-emerald-500 mx-auto" />
+
           <p className="text-slate-400 mt-4 text-lg">
             Building solutions that create impact
           </p>
@@ -64,7 +65,7 @@ const Projects = () => {
             {index + 1} / {projects.length} projects
           </div>
 
-          {/* ARROWS (SEPARATE ROW — FIXED UX) */}
+          {/* ARROWS */}
           <div className="flex justify-center items-center gap-6 mb-5">
 
             <button
@@ -98,6 +99,7 @@ const Projects = () => {
             >
               <ChevronRight size={30} />
             </button>
+
           </div>
 
           {/* DOT INDICATOR */}
@@ -112,7 +114,7 @@ const Projects = () => {
             ))}
           </div>
 
-          {/* ---------- SLIDE ---------- */}
+          {/* ---------- PROJECT CARD ---------- */}
           <AnimatePresence mode="wait">
             <motion.div
               key={project.id}
@@ -122,6 +124,7 @@ const Projects = () => {
               whileDrag={{ scale: 0.97 }}
               onDragEnd={(e, { offset, velocity }) => {
                 const swipe = swipePower(offset.x, velocity.x);
+
                 if (swipe < -swipeConfidenceThreshold) paginate(1);
                 else if (swipe > swipeConfidenceThreshold) paginate(-1);
               }}
@@ -140,6 +143,7 @@ const Projects = () => {
                   transition-all duration-300
                 "
               >
+
                 {/* IMAGE */}
                 <div className="relative h-28 overflow-hidden">
                   <img
@@ -147,6 +151,7 @@ const Projects = () => {
                     alt={project.name}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                   />
+
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent opacity-60" />
 
                   <div className="absolute top-2 left-2">
@@ -159,38 +164,36 @@ const Projects = () => {
                 {/* CONTENT */}
                 <div className="p-4 space-y-3">
 
+                  {/* PROJECT TITLE */}
                   <h3 className="text-base font-bold text-white group-hover:text-teal-400 transition-colors">
                     {project.name}
                   </h3>
 
+                  {/* SUMMARY */}
                   <p className="text-slate-300 text-sm leading-relaxed">
-                    {project.description}
+                    {project.summary}
                   </p>
 
-                  {/* Problem + Solution */}
+                  {/* RESPONSIBILITIES */}
                   <div className="space-y-1 text-xs">
-                    <div>
-                      <span className="text-orange-400 font-semibold">
-                        Problem:
-                      </span>{" "}
-                      <span className="text-slate-400">{project.problem}</span>
-                    </div>
-                    <div>
-                      <span className="text-teal-400 font-semibold">
-                        Solution:
-                      </span>{" "}
-                      <span className="text-slate-400">{project.solution}</span>
-                    </div>
+
+                    <span className="text-teal-400 font-semibold">
+                      Key Responsibilities:
+                    </span>
+
+                    <ul className="list-disc list-inside text-slate-400 space-y-1">
+
+                      {project.responsibilities.map((task, i) => (
+                        <li key={i}>{task}</li>
+                      ))}
+
+                    </ul>
+
                   </div>
 
-                  {/* Impact */}
-                  <div className="flex items-start gap-2 p-2 bg-slate-900/50 rounded-lg">
-                    <Target className="text-emerald-400 mt-0.5" size={14} />
-                    <p className="text-xs text-slate-300">{project.impact}</p>
-                  </div>
-
-                  {/* Tech */}
+                  {/* TECHNOLOGIES */}
                   <div className="flex flex-wrap gap-1">
+
                     {project.technologies.map((tech, idx) => (
                       <Badge
                         key={idx}
@@ -200,10 +203,12 @@ const Projects = () => {
                         {tech}
                       </Badge>
                     ))}
+
                   </div>
 
                   {/* BUTTONS */}
                   <div className="flex justify-center gap-2 pt-2 flex-wrap">
+
                     {project.report && (
                       <Button
                         className={glassButton}
@@ -239,11 +244,15 @@ const Projects = () => {
                         <ExternalLink size={14} /> Live
                       </Button>
                     )}
+
                   </div>
+
                 </div>
+
               </Card>
             </motion.div>
           </AnimatePresence>
+
         </div>
       </div>
     </section>

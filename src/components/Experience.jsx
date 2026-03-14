@@ -73,7 +73,7 @@ const Experience = () => {
                   }`}
                 >
 
-                  {/* DATE + DOT (desktop only) */}
+                  {/* DATE + DOT */}
                   <div className="hidden md:block absolute left-1/2 -translate-x-1/2 top-6 z-20">
 
                     <div
@@ -144,16 +144,19 @@ const Experience = () => {
                             <span>{exp.location}</span>
                           </div>
 
-                          <ul className="space-y-2 text-sm">
-                            {exp.responsibilities
-                              .slice(0, 2)
-                              .map((resp, idx) => (
-                                <li key={idx} className="text-slate-300 flex gap-2">
-                                  <span className="text-teal-400">▸</span>
-                                  <span>{resp}</span>
-                                </li>
-                              ))}
+                          {/* RESPONSIBILITIES */}
+                          <ul className="space-y-2 text-sm mt-3">
+                            {exp.responsibilities.map((resp, idx) => (
+                              <li
+                                key={idx}
+                                className="text-slate-300 flex gap-2 leading-relaxed"
+                              >
+                                <span className="text-teal-400">▸</span>
+                                <span>{resp}</span>
+                              </li>
+                            ))}
                           </ul>
+
                         </div>
                       </div>
                     </Card>

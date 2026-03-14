@@ -68,7 +68,7 @@ const Header = () => {
               onClick={(e) => scrollToSection(e, "#hero")}
               className="text-2xl font-bold bg-gradient-to-r from-teal-400 to-emerald-400 bg-clip-text text-transparent hover:opacity-80"
             >
-              AK
+              KV
             </a>
 
             {/* DESKTOP NAV */}

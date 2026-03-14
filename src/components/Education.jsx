@@ -89,7 +89,7 @@ const Education = () => {
                     </div>
                   </div>
 
-                  {/* HIGHLIGHTS */}
+                  {/* HIGHLIGHTS
                   <div>
                     <h4 className="text-white font-semibold mb-2 text-sm sm:text-base">
                       Highlights:
@@ -105,7 +105,7 @@ const Education = () => {
                         </li>
                       ))}
                     </ul>
-                  </div>
+                  </div> */}
 
                   {/* SUBJECTS */}
                   <div>

@@ -5,6 +5,7 @@ import {
   User,
   Linkedin,
   Instagram,
+  MessageCircle,
   MapPin,
 } from "lucide-react";
 import { motion } from "framer-motion";
@@ -63,7 +64,9 @@ const Contact = () => {
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4">
             Contact Me
           </h2>
+
           <div className="w-20 h-1 bg-gradient-to-r from-teal-500 to-emerald-500 mx-auto" />
+
           <p className="text-slate-400 mt-4 text-base sm:text-lg">
             Let’s build something great together
           </p>
@@ -92,10 +95,14 @@ const Contact = () => {
             <div className="space-y-4 text-slate-300 text-sm sm:text-base">
 
               <Info icon={<User size={18} />} text={personal.name} />
+
               <Info icon={<Mail size={18} />} text={personal.email} />
-              <Info icon={<Phone size={18} />} text={personal.phone || "+1 XXX XXX XXXX"} />
+
+              <Info icon={<Phone size={18} />} text={personal.phone} />
+
               <Info icon={<MapPin size={18} />} text="New York, United States" />
 
+              {/* LinkedIn */}
               <a
                 href={personal.linkedin}
                 target="_blank"
@@ -106,6 +113,7 @@ const Contact = () => {
                 LinkedIn Profile
               </a>
 
+              {/* Instagram */}
               <a
                 href={personal.instagram}
                 target="_blank"
@@ -114,6 +122,17 @@ const Contact = () => {
               >
                 <Instagram className="text-pink-400" size={18} />
                 Instagram
+              </a>
+
+              {/* WhatsApp */}
+              <a
+                href={`https://wa.me/${personal.phone.replace(/[^0-9]/g, "")}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-3 hover:text-green-400 transition-all hover:translate-x-1"
+              >
+                <MessageCircle className="text-green-500" size={18} />
+                WhatsApp
               </a>
 
             </div>
@@ -133,6 +152,7 @@ const Contact = () => {
               shadow-lg shadow-teal-500/5
             "
           >
+
             <Input
               placeholder="Your Name"
               value={form.name}
@@ -199,6 +219,7 @@ const Contact = () => {
                 Message sent successfully ✔
               </p>
             )}
+
           </motion.form>
         </div>
       </div>
