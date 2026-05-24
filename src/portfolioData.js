@@ -57,7 +57,7 @@ export const portfolioData = {
     logo: nyuLogo,
     duration: "Aug 2025 - May 2027",
     location: "New York, United States",
-    gpa: "3.778/4.0",
+    gpa: "3.834/4.0",
     // highlights: [
     //   "Currently in Semester 2 with strong focus on applied management and technology coursework",
     // "Completed industry-driven projects in Operations Management, Financial Analysis, and Organizational Behavior",
