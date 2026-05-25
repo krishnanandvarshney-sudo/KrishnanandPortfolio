@@ -1,259 +1,604 @@
-import React, { useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
+
 import {
-  ExternalLink,
-  Github,
-  FileText,
-  Presentation,
   ChevronLeft,
   ChevronRight,
+  X,
+  FileText,
+  Presentation,
+  Github,
+  ExternalLink,
 } from "lucide-react";
+
 import { motion, AnimatePresence } from "framer-motion";
+
 import { Card } from "./ui/card";
 import { Badge } from "./ui/badge";
 import { Button } from "./ui/button";
+
 import { portfolioData } from "../portfolioData";
 
-/* ---------- Glass Button ---------- */
 const glassButton =
-  "inline-flex items-center justify-center gap-2 px-3 py-1 rounded-lg " +
-  "bg-slate-800/40 backdrop-blur-md text-white font-medium text-xs " +
-  "!border-l-2 !border-b-2 !border-amber-400 !border-t-0 !border-r-0 " +
-  "shadow-md shadow-black/30 hover:text-amber-400 " +
-  "hover:shadow-amber-500/40 hover:shadow-lg " +
-  "transform-gpu hover:scale-105 transition-all duration-300";
-
-/* ---------- Swipe Logic ---------- */
-const swipeConfidenceThreshold = 7000;
-const swipePower = (offset, velocity) => Math.abs(offset) * velocity;
+  "inline-flex items-center justify-center gap-2 px-4 py-2 rounded-lg " +
+  "bg-slate-800/70 backdrop-blur-md text-white font-medium text-sm " +
+  "border border-slate-700 hover:border-teal-400 " +
+  "hover:text-teal-400 transition-all duration-300";
 
 const Projects = () => {
   const { projects } = portfolioData;
-  const [index, setIndex] = useState(0);
-  const [direction, setDirection] = useState(0);
 
-  const paginate = (newDirection) => {
-    setDirection(newDirection);
-    setIndex(
-      (prev) => (prev + newDirection + projects.length) % projects.length
-    );
+  const sliderRef = useRef(null);
+
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  const [selectedProject, setSelectedProject] = useState(null);
+
+  /* ---------- AUTO SLIDER ---------- */
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      nextSlide();
+    }, 2000);
+
+    return () => clearInterval(interval);
+  }, [activeIndex]);
+
+  /* ---------- NEXT ---------- */
+
+  const nextSlide = () => {
+    const next = (activeIndex + 1) % projects.length;
+
+    setActiveIndex(next);
+
+    sliderRef.current?.scrollTo({
+      left: next * 360,
+      behavior: "smooth",
+    });
   };
 
-  const project = projects[index];
+  /* ---------- PREVIOUS ---------- */
+
+  const prevSlide = () => {
+    const prev =
+      activeIndex === 0
+        ? projects.length - 1
+        : activeIndex - 1;
+
+    setActiveIndex(prev);
+
+    sliderRef.current?.scrollTo({
+      left: prev * 360,
+      behavior: "smooth",
+    });
+  };
 
   return (
-    <section id="projects" className="py-20 bg-slate-900">
-      <div className="max-w-7xl mx-auto px-6">
+    <section
+      id="projects"
+      className="py-20 bg-slate-950 overflow-hidden"
+    >
+      <div className="max-w-7xl mx-auto px-8">
 
-        {/* HEADER */}
-        <div className="text-center mb-14">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
+        {/* ---------- HEADING ---------- */}
+
+        <div className="text-center mb-12">
+
+          <h2 className="text-5xl font-bold text-white">
             Featured Projects
           </h2>
 
-          <div className="w-20 h-1 bg-gradient-to-r from-teal-500 to-emerald-500 mx-auto" />
+          <div
+            className="
+              w-20 h-1
+              bg-gradient-to-r
+              from-teal-500
+              to-emerald-500
+              mx-auto mt-4
+            "
+          />
 
-          <p className="text-slate-400 mt-4 text-lg">
-            Building solutions that create impact
+          <p className="text-slate-400 mt-4">
+            Business Analysis & Strategy Work
           </p>
+
         </div>
 
-        {/* ---------- CAROUSEL ---------- */}
-        <div className="relative max-w-2xl mx-auto">
+        {/* ---------- COUNTER ---------- */}
 
-          {/* PROJECT COUNTER */}
-          <div className="text-center mb-3 text-teal-300 text-lg font-semibold tracking-wide">
-            {index + 1} / {projects.length} projects
+        <div className="flex justify-center mb-8">
+
+          <div
+            className="
+              px-5 py-2 rounded-full
+              bg-slate-900
+              border border-teal-500/30
+              text-teal-300 font-semibold
+            "
+          >
+            {activeIndex + 1} / {projects.length} Projects
           </div>
 
-          {/* ARROWS */}
-          <div className="flex justify-center items-center gap-6 mb-5">
+        </div>
 
-            <button
-              onClick={() => paginate(-1)}
-              className="
-                p-3 rounded-full
-                bg-slate-800/70 backdrop-blur-md
-                border border-slate-600
-                text-white
-                hover:scale-110 hover:bg-slate-700
-                transition-all duration-300
-                shadow-[0_0_30px_rgba(20,184,166,0.35)]
-                hover:shadow-teal-400/40
-              "
-            >
-              <ChevronLeft size={30} />
-            </button>
+        <div className="relative">
 
-            <button
-              onClick={() => paginate(1)}
-              className="
-                p-3 rounded-full
-                bg-slate-800/70 backdrop-blur-md
-                border border-slate-600
-                text-white
-                hover:scale-110 hover:bg-slate-700
-                transition-all duration-300
-                shadow-[0_0_30px_rgba(20,184,166,0.35)]
-                hover:shadow-teal-400/40
-              "
-            >
-              <ChevronRight size={30} />
-            </button>
+          {/* ---------- LEFT BUTTON ---------- */}
 
-          </div>
+          <button
+            onClick={prevSlide}
+            className="
+              absolute left-0 top-1/2
+              -translate-y-1/2
+              z-20
 
-          {/* DOT INDICATOR */}
-          <div className="flex justify-center gap-2 mb-5">
-            {projects.map((_, i) => (
-              <div
-                key={i}
-                className={`h-1.5 rounded-full transition-all duration-300 ${
-                  i === index ? "w-6 bg-teal-400" : "w-2 bg-slate-600"
-                }`}
-              />
+              p-3 rounded-full
+
+              bg-slate-800/90
+              hover:bg-teal-500
+
+              transition-all
+            "
+          >
+            <ChevronLeft
+              size={30}
+              className="text-white"
+            />
+          </button>
+
+          {/* ---------- RIGHT BUTTON ---------- */}
+
+          <button
+            onClick={nextSlide}
+            className="
+              absolute right-0 top-1/2
+              -translate-y-1/2
+              z-20
+
+              p-3 rounded-full
+
+              bg-slate-800/90
+              hover:bg-teal-500
+
+              transition-all
+            "
+          >
+            <ChevronRight
+              size={30}
+              className="text-white"
+            />
+          </button>
+
+          {/* ---------- CAROUSEL ---------- */}
+
+          <div
+            ref={sliderRef}
+            className="
+              flex gap-6
+
+              overflow-x-auto
+              scroll-smooth
+              scrollbar-hide
+
+              px-12
+              pb-8
+            "
+          >
+
+            {projects.map((project, index) => (
+
+              <motion.div
+                key={project.id}
+                whileHover={{
+                  scale: 1.03,
+                }}
+                transition={{
+                  duration: 0.3,
+                }}
+              >
+
+                <Card
+                  onClick={() =>
+                    setSelectedProject(project)
+                  }
+                  className={`
+                    min-w-[340px]
+                    h-[220px]
+
+                    p-0
+                    bg-transparent
+
+                    shrink-0
+                    cursor-pointer
+
+                    overflow-hidden
+                    rounded-2xl
+
+                    transition-all
+                    duration-500
+
+                    ${
+                      activeIndex === index
+                        ? `
+                          scale-[1.02]
+                          z-10
+
+                          border-2
+                          border-teal-400
+
+                          shadow-[0_0_35px_rgba(45,212,191,0.45)]
+                        `
+                        : `
+                          opacity-60
+                          scale-95
+
+                          border
+                          border-slate-700
+                        `
+                    }
+                  `}
+                >
+
+                  <div
+                    className="
+                      relative
+                      w-full
+                      h-full
+                    "
+                  >
+
+                    {/* IMAGE */}
+
+                    <img
+                      src={project.image}
+                      alt={project.name}
+                      className="
+                        absolute inset-0
+                        w-full h-full
+                        object-cover
+                      "
+                    />
+
+                    {/* OVERLAY */}
+
+                    <div
+                      className="
+                        absolute inset-0
+                        bg-gradient-to-t
+                        from-black
+                        via-black/50
+                        to-transparent
+                      "
+                    />
+
+                    {/* TITLE */}
+
+                    <div
+                      className="
+                        absolute
+                        bottom-5
+                        left-5
+                        right-5
+                      "
+                    >
+
+                      <h3
+                        className="
+                          text-xl
+                          font-bold
+                          text-white
+                          leading-snug
+                        "
+                      >
+                        {project.name}
+                      </h3>
+
+                    </div>
+
+                  </div>
+
+                </Card>
+
+              </motion.div>
+
             ))}
+
           </div>
 
-          {/* ---------- PROJECT CARD ---------- */}
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={project.id}
-              drag="x"
-              dragConstraints={{ left: 0, right: 0 }}
-              dragElastic={0.8}
-              whileDrag={{ scale: 0.97 }}
-              onDragEnd={(e, { offset, velocity }) => {
-                const swipe = swipePower(offset.x, velocity.x);
+        </div>
 
-                if (swipe < -swipeConfidenceThreshold) paginate(1);
-                else if (swipe > swipeConfidenceThreshold) paginate(-1);
-              }}
-              initial={{ opacity: 0, x: direction * 40 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: direction * -40 }}
-              transition={{ duration: 0.25 }}
+        {/* ---------- MODAL ---------- */}
+
+        <AnimatePresence>
+
+          {selectedProject && (
+
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="
+                fixed inset-0
+
+                bg-black/80
+                backdrop-blur-sm
+
+                z-50
+
+                flex
+                justify-center
+                items-center
+
+                p-6
+              "
             >
-              <Card
+
+              <motion.div
+                initial={{
+                  scale: 0.85,
+                  opacity: 0,
+                }}
+                animate={{
+                  scale: 1,
+                  opacity: 1,
+                }}
+                exit={{
+                  scale: 0.85,
+                  opacity: 0,
+                }}
+                transition={{
+                  duration: 0.3,
+                }}
                 className="
-                  bg-slate-800/40
-                  border border-slate-700
-                  border-b-2 border-b-teal-400
-                  overflow-hidden group
-                  hover:shadow-lg hover:shadow-teal-500/10
-                  transition-all duration-300
+                  bg-slate-900
+
+                  rounded-2xl
+                  overflow-hidden
+
+                  max-w-4xl
+                  w-full
+
+                  relative
+
+                  border
+                  border-slate-700
                 "
               >
 
+                {/* CLOSE */}
+
+                <button
+                  onClick={() =>
+                    setSelectedProject(null)
+                  }
+                  className="
+                    absolute
+                    right-4
+                    top-4
+                    z-20
+
+                    p-2
+                    rounded-full
+
+                    bg-black/40
+
+                    hover:bg-teal-500
+
+                    transition-all
+                  "
+                >
+                  <X className="text-white" />
+                </button>
+
                 {/* IMAGE */}
-                <div className="relative h-28 overflow-hidden">
+
+                <div className="relative">
+
                   <img
-                    src={project.image}
-                    alt={project.name}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    src={selectedProject.image}
+                    alt={selectedProject.name}
+                    className="
+                      w-full
+                      h-72
+                      object-cover
+                    "
                   />
 
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent opacity-60" />
+                  <div
+                    className="
+                      absolute inset-0
+                      bg-gradient-to-t
+                      from-slate-900
+                      via-black/40
+                      to-transparent
+                    "
+                  />
 
-                  <div className="absolute top-2 left-2">
-                    <Badge className="bg-teal-500/90 text-white border-none text-xs">
-                      {project.role}
+                  <div
+                    className="
+                      absolute
+                      bottom-6
+                      left-6
+                    "
+                  >
+
+                    <Badge className="bg-teal-500 mb-4">
+                      {selectedProject.role}
                     </Badge>
+
+                    <h2
+                      className="
+                        text-4xl
+                        font-bold
+                        text-white
+                      "
+                    >
+                      {selectedProject.name}
+                    </h2>
+
                   </div>
+
                 </div>
 
                 {/* CONTENT */}
-                <div className="p-4 space-y-3">
 
-                  {/* PROJECT TITLE */}
-                  <h3 className="text-base font-bold text-white group-hover:text-teal-400 transition-colors">
-                    {project.name}
-                  </h3>
+                <div className="p-8">
 
-                  {/* SUMMARY */}
-                  <p className="text-slate-300 text-sm leading-relaxed">
-                    {project.summary}
-                  </p>
+                  {/* PROBLEM */}
 
-                  {/* RESPONSIBILITIES */}
-                  <div className="space-y-1 text-xs">
+                  <div className="mb-6">
 
-                    <span className="text-teal-400 font-semibold">
-                      Key Responsibilities:
-                    </span>
+                    <p
+                      className="
+                        text-orange-400
+                        font-semibold
+                        mb-2
+                        text-lg
+                      "
+                    >
+                      Problem
+                    </p>
 
-                    <ul className="list-disc list-inside text-slate-400 space-y-1">
+                    <p className="text-slate-300 leading-relaxed">
+                      {selectedProject.problem}
+                    </p>
 
-                      {project.responsibilities.map((task, i) => (
-                        <li key={i}>{task}</li>
-                      ))}
+                  </div>
 
-                    </ul>
+                  {/* ACHIEVEMENT */}
+
+                  <div className="mb-6">
+
+                    <p
+                      className="
+                        text-emerald-400
+                        font-semibold
+                        mb-2
+                        text-lg
+                      "
+                    >
+                      Achievement
+                    </p>
+
+                    <p className="text-slate-300 leading-relaxed">
+                      {selectedProject.achievement}
+                    </p>
 
                   </div>
 
                   {/* TECHNOLOGIES */}
-                  <div className="flex flex-wrap gap-1">
 
-                    {project.technologies.map((tech, idx) => (
-                      <Badge
-                        key={idx}
-                        variant="secondary"
-                        className="bg-slate-900 text-slate-400 text-[10px]"
-                      >
-                        {tech}
-                      </Badge>
-                    ))}
+                  <div
+                    className="
+                      flex
+                      flex-wrap
+                      gap-2
+                      mb-8
+                    "
+                  >
+
+                    {selectedProject.technologies.map(
+                      (tech, i) => (
+
+                        <Badge
+                          key={i}
+                          className="
+                            bg-slate-800
+                            text-slate-300
+                            border border-slate-700
+                          "
+                        >
+                          {tech}
+                        </Badge>
+
+                      )
+                    )}
 
                   </div>
 
                   {/* BUTTONS */}
-                  <div className="flex justify-center gap-2 pt-2 flex-wrap">
 
-                    {project.report && (
+                  <div className="flex flex-wrap gap-3">
+
+                    {selectedProject.report && (
+
                       <Button
                         className={glassButton}
-                        onClick={() => window.open(project.report, "_blank")}
+                        onClick={() =>
+                          window.open(
+                            selectedProject.report,
+                            "_blank"
+                          )
+                        }
                       >
-                        <FileText size={14} /> Report
+                        <FileText size={15} />
+                        Report
                       </Button>
+
                     )}
 
-                    {project.ppt && (
+                    {selectedProject.ppt && (
+
                       <Button
                         className={glassButton}
-                        onClick={() => window.open(project.ppt, "_blank")}
+                        onClick={() =>
+                          window.open(
+                            selectedProject.ppt,
+                            "_blank"
+                          )
+                        }
                       >
-                        <Presentation size={14} /> PPT
+                        <Presentation size={15} />
+                        PPT
                       </Button>
+
                     )}
 
-                    {project.github && (
+                    {selectedProject.github && (
+
                       <Button
                         className={glassButton}
-                        onClick={() => window.open(project.github, "_blank")}
+                        onClick={() =>
+                          window.open(
+                            selectedProject.github,
+                            "_blank"
+                          )
+                        }
                       >
-                        <Github size={14} /> Code
+                        <Github size={15} />
+                        Code
                       </Button>
+
                     )}
 
-                    {project.live && (
+                    {selectedProject.live && (
+
                       <Button
                         className={glassButton}
-                        onClick={() => window.open(project.live, "_blank")}
+                        onClick={() =>
+                          window.open(
+                            selectedProject.live,
+                            "_blank"
+                          )
+                        }
                       >
-                        <ExternalLink size={14} /> Live
+                        <ExternalLink size={15} />
+                        Live
                       </Button>
+
                     )}
 
                   </div>
 
                 </div>
 
-              </Card>
-            </motion.div>
-          </AnimatePresence>
+              </motion.div>
 
-        </div>
+            </motion.div>
+
+          )}
+
+        </AnimatePresence>
+
       </div>
     </section>
   );

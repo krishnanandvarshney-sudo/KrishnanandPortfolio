@@ -8,11 +8,15 @@ import kjsceLogo from "./assets/Mum Uni Logo.jpeg"
 import project1 from "./assets/Project1.png"
 import project2 from "./assets/Project2.png"
 import project3 from "./assets/Project3.png"
+import project4 from "./assets/Project4.png"
+import project5 from "./assets/Project5.png"
 import reportProject1 from "./assets/Report_OM.pdf"
 import reportProject2 from "./assets/Report_Finance.pdf"
 import reportProject3 from "./assets/Black Book_BE.pdf"
+import reportProject4 from "./assets/Group 12 Final Paper.pdf" 
 import pptProject1 from "./assets/PPT_OM.pdf"
 import pptProject2 from "./assets/PPT_Finance.pdf"
+import pptProject5 from "./assets/Project5PPT.pdf"
 import cert1PDF from "./assets/cert1PDF.pdf"
 import cert2PDF from "./assets/cert2PDF.pdf"
 import cert3PDF from "./assets/cert3PDF.pdf"
@@ -155,15 +159,11 @@ export const portfolioData = {
     role: "Operations Strategy",
     image: project1,
 
-    summary:
+    problem:
       "An operations strategy consulting project analyzing Boeing’s 737 MAX and 787 programs to evaluate supply chain resilience, demand forecasting, and quality management challenges in global aviation manufacturing.",
 
-    responsibilities: [
-      "Analyzed operational disruptions in Boeing’s 737 MAX and 787 programs using operations management frameworks.",
-      "Developed demand forecasting models using Holt’s Trend-Adjusted Forecasting method.",
-      "Built a Supplier Risk Matrix to evaluate single-source supplier dependencies and supply chain vulnerabilities.",
-      "Conducted quality analysis using QFD and Fishbone (Root Cause) techniques to identify systemic issues.",
-      "Proposed strategic recommendations for capacity planning, dual sourcing, and quality assurance improvements."
+    achievement: [
+      "Improved operational resilience by developing data-driven forecasting, supplier risk, and quality optimization frameworks that reduced forecasting errors by up to 23% and strengthened supply chain decision-making."
     ],
 
     technologies: [
@@ -172,7 +172,11 @@ export const portfolioData = {
       "Supply Chain Risk Matrix",
       "QFD",
       "Six Sigma",
-      "Root Cause Analysis"
+      "Root Cause Analysis",
+      "Process Optimization",
+      "Business Analytics",
+      "Forecast Modeling",
+      "Data Driven decison making"
     ],
 
     report: reportProject1,
@@ -187,15 +191,12 @@ export const portfolioData = {
     role: "Financial Strategy & Business Analyst",
     image: project2,
 
-    summary:
-      "A real-world corporate finance and strategy project conducted with a local Brooklyn pizzeria to evaluate financial performance, operational efficiency, and expansion feasibility using real business data.",
+    problem:
+      "A growing local pizzeria needed a structured financial strategy to evaluate operational performance, optimize financing decisions, improve delivery efficiency, and assess expansion opportunities while maintaining long-term profitability and liquidity.",
 
-    responsibilities: [
-      "Conducted on-site interviews with business owners to understand operational workflows and financial challenges.",
-      "Built financial statements and cash flow models based on real operational data.",
-      "Performed valuation and investment analysis using WACC, NPV, and IRR models.",
-      "Analyzed multiple financing scenarios to determine the optimal capital structure.",
-      "Developed strategic recommendations for operational improvements and future expansion."
+    achievement: [
+      "Optimized business expansion and financing strategy through financial forecasting and valuation modeling, increasing projected NPV to ~$880K while reducing WACC to 7.6%."
+
     ],
 
     technologies: [
@@ -204,7 +205,9 @@ export const portfolioData = {
       "Scenario Planning",
       "Valuation",
       "Stakeholder Analysis",
-      "Excel"
+      "Excel",
+      "Agency Theory",
+      "Business Valuation Frameworks"
     ],
 
     report: reportProject2,
@@ -219,10 +222,10 @@ export const portfolioData = {
     role: "Research Project",
     image: project3,
 
-    summary:
-      "A research project focused on improving heat exchanger efficiency by analyzing how different surface geometries influence heat transfer performance using Computational Fluid Dynamics (CFD).",
+    problem:
+      "Traditional smooth-surface thermal systems often suffer from inefficient heat dissipation under turbulent convection conditions. The challenge was to analyze whether surface roughness and geometry modification could improve heat transfer performance while ensuring computational accuracy through grid independence studies.",
 
-    responsibilities: [
+    achievement: [
       "Designed modified surface geometries to analyze their impact on heat transfer performance.",
       "Conducted CFD simulations to study fluid flow and thermal behavior across different configurations.",
       "Evaluated heat transfer coefficients and pressure drop variations across models.",
@@ -235,11 +238,71 @@ export const portfolioData = {
       "Heat Transfer Analysis",
       "Thermal Engineering",
       "ANSYS / Simulation Tools",
-      "Data Analysis"
+      "Data Analysis",
+      "Numerical Simulation",
+      "Engineering Optimization",
+      "Grid Independence Study",
+      "MATLAB",
+      "Excel"
+    ],
+     report: reportProject3,
+    ppt: null,
+    github: null,
+    live: null
+  },
+  {
+    id: 4,
+    name: "When AI Replaces CRM: Rethinking Salesforce’s Role in the U.S. SaaS Industry",
+    role: "Research Project",
+    image: project4,
+
+    problem:
+"Traditional CRM systems are losing competitive advantage as AI-driven platforms automate workflows and shift software value from data management to intelligent execution.",
+    achievement: [
+      "Developed a strategic AI transformation framework for Salesforce by analyzing SaaS industry disruption, AI-driven execution platforms, and outcome-based business model innovation."
     ],
 
-    report: reportProject3,
+    technologies: [
+      "PEST Analysis",
+      "Porter’s Five Forces",
+      "Business Model Canvas",
+      "Strategic Analysis",
+      "AI Market Research",
+      "Generative AI",
+      "SaaS Industry Analysis",
+      "Workflow Automation",
+      "Business Strategy",
+    ],
+     report: reportProject4,
     ppt: null,
+    github: null,
+    live: null
+  },
+{
+    id: 5,
+    name: "StudyPulse – AI-Powered Adaptive Learning Platform",
+    role: "Product Developement",
+    image: project5,
+
+    problem:
+    "Students struggle to maintain consistent learning habits because existing platforms use rigid schedules, fragmented systems, and generic reminders that fail to adapt to real-life behavior.",
+    achievement: [
+      "Designed and validated a context-aware learning platform that improves engagement through adaptive reminders, personalized study timing, and behavior-driven learning experiences."
+    ],
+
+    technologies: [
+      "UX Research",
+      "Design Thinking",
+      "Behavioral Analysis",
+      "User Interviews",
+      "Usability Testing",
+      "Product Strategy",
+      "AI-Powered Personalization",
+      "Wireframing & Prototyping",
+      "User Journey Mapping",
+    ],
+   report: null,
+    ppt: pptProject5,
     github: null,
     live: null
   }
@@ -364,24 +427,31 @@ certifications: [
   experience: [
   {
     id: 1,
-    role: "Product Manager",
-    company: "Lalitech India Private Limited",
+    role: "Associate Product Manager",
+    company: "Lalitech",
     logo: LalitechLogo,
     type: "Full-time",
     duration: "June 2024 - Aug 2025",
     location: "Pune, Maharashtra, India",
     responsibilities: [
-      "Led product development by defining scope, roadmap, and deliverables aligned with business objectives.",
-      "Managed Agile sprints and coordinated cross-functional teams to deliver product releases.",
-      "Implemented AI-driven market analysis to improve product positioning and pricing strategies.",
-      "Introduced AI productivity tools that reduced administrative workload by 30%.",
-      "Oversaw product documentation, budgets, and post-launch performance reviews."
+      "Directed delivery of AI-powered products across communication and collaboration platforms, enhancing automation and user productivity.",
+      "Owned roadmap planning, feature prioritization, sprint execution, and cross-functional coordination to deliver scalable product enhancements aligned with business and user needs.",
+      "Worked closely with engineering, design, and business stakeholders to define requirements, streamline execution workflows, and improve release delivery timelines.",
+      "Conducted user research, customer feedback analysis, and market research to identify product opportunities, improve usability, and optimize feature adoption",
+      "Defined and tracked product KPIs, customer engagement metrics, and operational performance indicators to support data-driven product decisions and roadmap planning.",
+      "Led Agile ceremonies including sprint planning, backlog grooming, release tracking, and stakeholder reporting using JIRA and Confluence",
+      "Designed AI-enabled operational workflows and internal process automation systems, reducing manual effort by 30% and improving execution efficiency across teams.",
+      "Supported go-to-market strategy through competitor analysis, pricing evaluation, customer segmentation, and AI-driven market sentiment analysis.",
+      "Collaborated with leadership teams on strategic initiatives focused on workflow optimization, scalability, customer retention, and operational improvement.",
+      "Improved cross-functional visibility and execution alignment by implementing structured reporting systems, product documentation standards, and roadmap tracking frameworks."
+
+
     ],
     
   },
     {
       id: 2,
-      role: "Assistant Manager",
+      role: "Assistant Project Manager",
       company: "JSW Steel",
       logo: JSWLogo,
       type: "Full-time",
@@ -390,10 +460,19 @@ certifications: [
       responsibilities: [
         
 
-"Managed maintenance operations for one of Asia’s largest steel converters.",
-"Reduced operational downtime by 15% through predictive analytics and root-cause analysis.",
-"Led a team of 40+ engineers while ensuring safety, efficiency, and quality standards.",
-"Implemented Total Quality Management (TQM) and Kaizen initiatives to improve operational performance."
+"Led end-to-end operations for a 2 x 350-ton converter in Steel Melting Shop (SMS-2), ensuring stable and continuous steel production in a high-throughput manufacturing environment",
+"Monitored and optimized blowing process parameters including oxygen flow and temperature control to improve process stability and product quality",
+"Reduced operational inefficiencies by analyzing tap-to-tap cycle time, improving throughput and minimizing process delays",
+"Identified and resolved process bottlenecks across converter operations to support uninterrupted production flow",
+"Improved yield and minimized metal loss through operational monitoring and process adjustments",
+"Tracked and analyzed process KPIs including heat efficiency, downtime, equipment availability, and process stability to support data-driven operational improvements",
+"Implemented predictive and preventive maintenance strategies using condition-based monitoring techniques including vibration and temperature trend analysis",
+"Conducted root cause analysis (RCA) on recurring equipment and process failures involving converter systems, lining wear, and cranes, improving reliability and reducing downtime",
+"Supported production planning and shift-level execution, handling real-time operational issues to maintain process continuity and production targets",
+"Coordinated with operations, maintenance, and quality teams to improve process standardization and workflow efficiency",
+"Ensured adherence to operational safety and process compliance standards in high-temperature manufacturing environments.",
+"Supported inventory planning and spare parts coordination, ensuring availability of critical maintenance components and distinguishing between critical and non-critical spares",
+"Assisted in basic vendor coordination and procurement support for operational and maintenance requirements"
 
 
       ],

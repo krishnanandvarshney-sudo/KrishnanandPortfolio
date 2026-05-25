@@ -1,45 +1,77 @@
 import React, { useState, useEffect } from "react";
-import { ArrowRight, Download } from "lucide-react";
+import { ArrowRight, Download, Eye } from "lucide-react";
 import { motion } from "framer-motion";
 import { Typewriter } from "react-simple-typewriter";
+
 import { portfolioData } from "../portfolioData";
-import resume from "../assets/Varshney_Krishnanand_Resume.pdf";
+import resume from "../assets/Krishnanand_Resume.pdf";
 
 const Hero = () => {
+
   const { personal } = portfolioData;
 
   const titles = [
     { text: "Product Manager", color: "text-emerald-200" },
-    { text: "NYU Graduate student", color: "text-amber-100" },
-    { text: "Industrial Operations Leader", color: "text-amber-50" },
+    { text: "Business Analyst", color: "text-amber-100" },
+    { text: "Industrial Operations leader", color: "text-amber-50" },
   ];
 
   const [titleIndex, setTitleIndex] = useState(0);
 
+  /* ---------- VISITOR COUNTER ---------- */
+
+  const [visits, setVisits] = useState(0);
+
   useEffect(() => {
+
+    fetch(
+      "https://api.countapi.xyz/hit/krishnanand-portfolio/visits"
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        setVisits(data.value);
+      });
+
+  }, []);
+
+  /* ---------- TITLE ANIMATION ---------- */
+
+  useEffect(() => {
+
     const interval = setInterval(() => {
-      setTitleIndex((prev) => (prev + 1) % titles.length);
+
+      setTitleIndex((prev) =>
+        (prev + 1) % titles.length
+      );
+
     }, 3000);
 
     return () => clearInterval(interval);
+
   }, []);
 
   return (
+
     <section
       id="hero"
       className="
         min-h-screen
         flex items-center
-        bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950
+        bg-gradient-to-br
+        from-slate-950
+        via-slate-900
+        to-slate-950
         pt-20
         overflow-x-hidden
       "
     >
+
       <div className="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-16">
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
 
-          {/* LEFT CONTENT */}
+          {/* ---------- LEFT CONTENT ---------- */}
+
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
@@ -47,13 +79,15 @@ const Hero = () => {
             className="space-y-6 text-center md:text-left"
           >
 
-            {/* FIXED BADGE */}
+            {/* BADGE */}
+
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.3 }}
               className="flex justify-center md:justify-start"
             >
+
               <span
                 className="
                   inline-flex
@@ -83,37 +117,63 @@ const Hero = () => {
                   shadow-lg shadow-cyan-500/20
                 "
               >
-                Available for Management & Tech Roles | Summer 2026 Internships
+                Available for Management & Tech Roles |
+                Summer 2026 Internships
               </span>
+
             </motion.div>
 
             {/* NAME */}
+
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4 }}
-              className="font-bold text-white leading-tight text-2xl sm:text-3xl lg:text-4xl"
+              className="
+                font-bold
+                text-white
+                leading-tight
+                text-2xl sm:text-3xl lg:text-4xl
+              "
             >
+
               Hi, I'm{" "}
-              <span className="bg-gradient-to-r from-teal-400 to-emerald-400 bg-clip-text text-transparent">
+
+              <span
+                className="
+                  bg-gradient-to-r
+                  from-teal-400
+                  to-emerald-400
+                  bg-clip-text
+                  text-transparent
+                "
+              >
                 Krishnanand Varshney
               </span>
+
             </motion.h2>
 
             {/* TYPEWRITER */}
+
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.55 }}
               className="
                 text-xl sm:text-2xl lg:text-3xl
-                font-semibold tracking-wide
+                font-semibold
+                tracking-wide
+
                 flex flex-wrap
                 justify-center md:justify-start
-                items-center gap-2
+                items-center
+                gap-2
               "
             >
-              <span className="text-slate-300">Aspiring</span>
+
+              <span className="text-slate-300">
+                Aspiring
+              </span>
 
               <span
                 className={`
@@ -122,6 +182,7 @@ const Hero = () => {
                   transition-colors duration-500
                 `}
               >
+
                 <Typewriter
                   words={titles.map((t) => t.text)}
                   loop={0}
@@ -131,10 +192,13 @@ const Hero = () => {
                   deleteSpeed={25}
                   delaySpeed={1200}
                 />
+
               </span>
+
             </motion.div>
 
             {/* TAGLINE */}
+
             <motion.p
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -143,6 +207,7 @@ const Hero = () => {
                 text-base sm:text-lg
                 text-slate-400
                 leading-relaxed
+
                 max-w-xl
                 mx-auto md:mx-0
               "
@@ -150,7 +215,85 @@ const Hero = () => {
               {personal.tagline}
             </motion.p>
 
+            {/* ---------- VISITOR COUNTER ---------- */}
+
+            <motion.div
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 1 }}
+              className="
+                flex
+                justify-center md:justify-start
+              "
+            >
+
+              <div
+                className="
+                  inline-flex
+                  items-center
+                  gap-3
+
+                  px-5
+                  py-3
+
+                  rounded-xl
+
+                  bg-slate-900/80
+                  backdrop-blur-md
+
+                  border border-teal-500/20
+
+                  shadow-lg
+                  shadow-teal-500/10
+                "
+              >
+
+                <div
+                  className="
+                    p-2
+                    rounded-full
+
+                    bg-teal-500/10
+                    border border-teal-400/20
+                  "
+                >
+                  <Eye
+                    size={18}
+                    className="text-teal-300"
+                  />
+                </div>
+
+                <div className="flex flex-col">
+
+                  <span
+                    className="
+                      text-xs
+                      uppercase
+                      tracking-widest
+                      text-slate-500
+                    "
+                  >
+                    Portfolio Visitors
+                  </span>
+
+                  <span
+                    className="
+                      text-lg
+                      font-bold
+                      text-white
+                    "
+                  >
+                    {visits.toLocaleString()}
+                  </span>
+
+                </div>
+
+              </div>
+
+            </motion.div>
+
             {/* BUTTONS */}
+
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -162,60 +305,172 @@ const Hero = () => {
                 justify-center md:justify-start
               "
             >
+
               <motion.a
                 href={personal.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ y: -3, scale: 1.04 }}
-                className="relative px-6 py-3 rounded-xl font-semibold text-white bg-slate-900 overflow-hidden text-sm sm:text-base"
+                className="
+                  relative
+                  px-6 py-3
+                  rounded-xl
+
+                  font-semibold
+                  text-white
+
+                  bg-slate-900
+                  overflow-hidden
+
+                  text-sm sm:text-base
+                "
               >
-                <span className="absolute inset-0 rounded-xl pointer-events-none border-l-2 border-b-2 border-teal-400" />
-                <span className="relative z-10 flex items-center justify-center gap-2">
-                  Let's Connect <ArrowRight size={18} />
+
+                <span
+                  className="
+                    absolute inset-0
+                    rounded-xl
+
+                    pointer-events-none
+
+                    border-l-2
+                    border-b-2
+                    border-teal-400
+                  "
+                />
+
+                <span
+                  className="
+                    relative z-10
+                    flex items-center
+                    justify-center gap-2
+                  "
+                >
+                  Let's Connect
+                  <ArrowRight size={18} />
                 </span>
+
               </motion.a>
 
               <motion.a
                 href={resume}
                 download
                 whileHover={{ y: -3, scale: 1.04 }}
-                className="relative px-6 py-3 rounded-xl font-semibold text-white bg-slate-900 overflow-hidden text-sm sm:text-base"
+                className="
+                  relative
+                  px-6 py-3
+                  rounded-xl
+
+                  font-semibold
+                  text-white
+
+                  bg-slate-900
+                  overflow-hidden
+
+                  text-sm sm:text-base
+                "
               >
-                <span className="absolute inset-0 rounded-xl pointer-events-none border-l-2 border-b-2 border-teal-400" />
-                <span className="relative z-10 flex items-center justify-center gap-2">
-                  Resume <Download size={18} />
+
+                <span
+                  className="
+                    absolute inset-0
+                    rounded-xl
+
+                    pointer-events-none
+
+                    border-l-2
+                    border-b-2
+                    border-teal-400
+                  "
+                />
+
+                <span
+                  className="
+                    relative z-10
+                    flex items-center
+                    justify-center gap-2
+                  "
+                >
+                  Resume
+                  <Download size={18} />
                 </span>
+
               </motion.a>
+
             </motion.div>
 
           </motion.div>
 
-          {/* RIGHT IMAGE */}
+          {/* ---------- RIGHT IMAGE ---------- */}
+
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.9, delay: 0.4 }}
+            transition={{
+              duration: 0.9,
+              delay: 0.4,
+            }}
             className="relative flex justify-center"
           >
-            <div className="relative w-[85%] sm:w-[70%] md:w-full max-w-md">
 
-              <div className="absolute inset-0 bg-gradient-to-br from-teal-500/20 to-yellow-400/20 rounded-full blur-3xl" />
+            <div
+              className="
+                relative
+                w-[85%]
+                sm:w-[70%]
+                md:w-full
+                max-w-md
+              "
+            >
 
-              <div className="relative rounded-2xl overflow-hidden border-4 border-slate-800 shadow-2xl">
+              <div
+                className="
+                  absolute inset-0
+                  bg-gradient-to-br
+                  from-teal-500/20
+                  to-yellow-400/20
+                  rounded-full
+                  blur-3xl
+                "
+              />
+
+              <div
+                className="
+                  relative
+                  rounded-2xl
+                  overflow-hidden
+
+                  border-4
+                  border-slate-800
+
+                  shadow-2xl
+                "
+              >
+
                 <img
                   src={personal.photo}
                   alt={personal.name}
-                  className="w-full h-auto object-cover"
+                  className="
+                    w-full
+                    h-auto
+                    object-cover
+                  "
                 />
+
               </div>
 
             </div>
+
           </motion.div>
 
         </div>
+
       </div>
+
     </section>
+
   );
+
 };
 
 export default Hero;
