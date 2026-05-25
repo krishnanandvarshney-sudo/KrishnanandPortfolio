@@ -20,59 +20,53 @@ const Hero = () => {
 
   /* ---------- VISITOR COUNTER ---------- */
 
-  const [visits, setVisits] = useState(100);
+const [visits, setVisits] = useState(100);
 
-  useEffect(() => {
+useEffect(() => {
 
-    const updateVisitorCount = async () => {
+  const updateVisitorCount = async () => {
 
-      try {
+    try {
 
-        const namespace = "krishnanandportfolio";
-        const key = "visits";
+      const namespace = "krishnanandportfolio";
+      const key = "visitors";
 
-        /* ---------- CHECK IF COUNTER EXISTS ---------- */
+      /* CREATE COUNTER ONCE */
 
-        const getResponse = await fetch(
-          `https://api.countapi.xyz/get/${namespace}/${key}`
-        );
+      await fetch(
 
-        const getData = await getResponse.json();
+        `https://api.countapi.xyz/create?namespace=${namespace}&key=${key}&value=100`
 
-        /* ---------- START FROM 100 ---------- */
+      );
 
-        if (getData.value === undefined) {
+      /* INCREMENT */
 
-          await fetch(
-            `https://api.countapi.xyz/set/${namespace}/${key}?value=100`
-          );
+      const response = await fetch(
 
-        }
+        `https://api.countapi.xyz/hit/${namespace}/${key}`
 
-        /* ---------- INCREMENT COUNTER ---------- */
+      );
 
-        const hitResponse = await fetch(
-          `https://api.countapi.xyz/hit/${namespace}/${key}?cachebuster=${Date.now()}`
-        );
+      const data = await response.json();
 
-        const hitData = await hitResponse.json();
+      console.log("VISITOR DATA:", data);
 
-        setVisits(hitData.value);
+      setVisits(data.value);
 
-      } catch (error) {
+    } catch (error) {
 
-        console.error(
-          "Visitor Counter Error:",
-          error
-        );
+      console.error(
+        "Visitor Counter Error:",
+        error
+      );
 
-      }
+    }
 
-    };
+  };
 
-    updateVisitorCount();
+  updateVisitorCount();
 
-  }, []);
+}, []);
 
   /* ---------- TITLE ANIMATION ---------- */
 
