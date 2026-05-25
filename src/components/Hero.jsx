@@ -13,24 +13,64 @@ const Hero = () => {
   const titles = [
     { text: "Product Manager", color: "text-emerald-200" },
     { text: "Business Analyst", color: "text-amber-100" },
-    { text: "Industrial Operations leader", color: "text-amber-50" },
+    { text: "Industrial Operations Leader", color: "text-amber-50" },
   ];
 
   const [titleIndex, setTitleIndex] = useState(0);
 
   /* ---------- VISITOR COUNTER ---------- */
 
-  const [visits, setVisits] = useState(0);
+  const [visits, setVisits] = useState(100);
 
   useEffect(() => {
 
-    fetch(
-      "https://api.countapi.xyz/hit/krishnanand-portfolio/visits"
-    )
-      .then((res) => res.json())
-      .then((data) => {
-        setVisits(data.value);
-      });
+    const updateVisitorCount = async () => {
+
+      try {
+
+        const namespace = "krishnanandportfolio";
+        const key = "visits";
+
+        /* ---------- CHECK IF COUNTER EXISTS ---------- */
+
+        const getResponse = await fetch(
+          `https://api.countapi.xyz/get/${namespace}/${key}`
+        );
+
+        const getData = await getResponse.json();
+
+        /* ---------- START FROM 100 ---------- */
+
+        if (getData.value === undefined) {
+
+          await fetch(
+            `https://api.countapi.xyz/set/${namespace}/${key}?value=100`
+          );
+
+        }
+
+        /* ---------- INCREMENT COUNTER ---------- */
+
+        const hitResponse = await fetch(
+          `https://api.countapi.xyz/hit/${namespace}/${key}?cachebuster=${Date.now()}`
+        );
+
+        const hitData = await hitResponse.json();
+
+        setVisits(hitData.value);
+
+      } catch (error) {
+
+        console.error(
+          "Visitor Counter Error:",
+          error
+        );
+
+      }
+
+    };
+
+    updateVisitorCount();
 
   }, []);
 
@@ -79,7 +119,7 @@ const Hero = () => {
             className="space-y-6 text-center md:text-left"
           >
 
-            {/* BADGE */}
+            {/* ---------- BADGE ---------- */}
 
             <motion.div
               initial={{ opacity: 0 }}
@@ -123,7 +163,7 @@ const Hero = () => {
 
             </motion.div>
 
-            {/* NAME */}
+            {/* ---------- NAME ---------- */}
 
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
@@ -153,7 +193,7 @@ const Hero = () => {
 
             </motion.h2>
 
-            {/* TYPEWRITER */}
+            {/* ---------- TYPEWRITER ---------- */}
 
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -197,7 +237,7 @@ const Hero = () => {
 
             </motion.div>
 
-            {/* TAGLINE */}
+            {/* ---------- TAGLINE ---------- */}
 
             <motion.p
               initial={{ opacity: 0 }}
@@ -292,7 +332,7 @@ const Hero = () => {
 
             </motion.div>
 
-            {/* BUTTONS */}
+            {/* ---------- BUTTONS ---------- */}
 
             <motion.div
               initial={{ opacity: 0, y: 20 }}
