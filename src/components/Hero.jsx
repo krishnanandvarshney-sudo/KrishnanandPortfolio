@@ -24,47 +24,21 @@ const [visits, setVisits] = useState(100);
 
 useEffect(() => {
 
-  const updateVisitorCount = async () => {
+  const storedVisits =
+    localStorage.getItem("portfolio-visits");
 
-    try {
+  let currentVisits = storedVisits
+    ? parseInt(storedVisits)
+    : 100;
 
-      const namespace = "krishnanandportfolio";
-      const key = "visitors";
+  currentVisits += 1;
 
-      /* CREATE COUNTER ONCE */
+  localStorage.setItem(
+    "portfolio-visits",
+    currentVisits
+  );
 
-      await fetch(
-
-        `https://api.countapi.xyz/create?namespace=${namespace}&key=${key}&value=100`
-
-      );
-
-      /* INCREMENT */
-
-      const response = await fetch(
-
-        `https://api.countapi.xyz/hit/${namespace}/${key}`
-
-      );
-
-      const data = await response.json();
-
-      console.log("VISITOR DATA:", data);
-
-      setVisits(data.value);
-
-    } catch (error) {
-
-      console.error(
-        "Visitor Counter Error:",
-        error
-      );
-
-    }
-
-  };
-
-  updateVisitorCount();
+  setVisits(currentVisits);
 
 }, []);
 
